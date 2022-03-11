@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,25 +213,29 @@
                 post-container">
 
                 <center><font face="Elephant" color="grey" size="6"> Running Rabbit by Your Body or Head Movement </font></center>
+
+
 <font face="Times New Roman" size="4"> 
 As the user moving their heads (or other gestures according to the models which users trained from the initial block), the runing rabbit move left and right, jump and duck to collect diamonds.
-<p>This is a 2D graphic game by using <a href="https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json" target="_blank" rel="noopener">mobilenet</a> in TensorFlow.js, employing VisibilityManager.js and TweenMax.min.js in this entertainment project.<br>
-</p></font><p></p>
-<p>You can find the codes from this <a href="https://github.com/ChengKang520/HRV_for_SLEEP_and_Pressure_Detection" target="_blank" rel="noopener">Github Link</a>.</p>
+
+This is a 2D graphic game by using [mobilenet](https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json) in TensorFlow.js, employing VisibilityManager.js and TweenMax.min.js in this entertainment project.
+</font>
+
+
+<p>You can find the codes from this <a href="https://github.com/ChengKang520/running_rabbit_tfjs" target="_blank" rel="noopener">Github Link</a>.</p>
 <ol>
 <li><a href="#train_model">Train Your Model</a></li>
 <li><a href="#running_rabbit">Running Rabbit</a></li>
 <li><a href="#contributors">Contributors</a></li>
 </ol>
 <hr>
-<h3 id="train-your-model"><font face="Arial Black" size="5"> Train Your Model </font> <a name="crawler"></a></h3>
-<p>You can use <a href="https://teachablemachine.withgoogle.com/train/image" target="_blank" rel="noopener">Teachable Machine</a> to train your models. For example, I used five catergories: “left”, “up”,  “right”,  “down”,  “forward”. After images recording and training, you should download the trained model, and there are model.json, weights.bin and metadata.json.</p>
+<h3 id="train-your-model"><a href="#Train-Your-Model" class="headerlink" title=" Train Your Model  "></a><font face="Arial Black" size="5"> Train Your Model </font> <a name="crawler"></a></h3><p>You can use <a href="https://teachablemachine.withgoogle.com/train/image" target="_blank" rel="noopener">Teachable Machine</a> to train your models. For example, I used five catergories: “left”, “up”,  “right”,  “down”,  “forward”. After images recording and training, you should download the trained model, and there are model.json, weights.bin and metadata.json.</p>
 <hr>
-<h3 id="running-rabbit"><font face="Arial Black" size="5"> Running Rabbit </font> <a name="crawler"></a></h3>
-<p>Move the model files to ./assets and go back to the project root, then open Windows PowerShell to excute:</p>
+<h3 id="running-rabbit"><a href="#Running-Rabbit" class="headerlink" title=" Running Rabbit  "></a><font face="Arial Black" size="5"> Running Rabbit </font> <a name="crawler"></a></h3><p>Move the model files to ./assets and go back to the project root, then open Windows PowerShell to excute:</p>
 <blockquote>
 <p>python -m http-server</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -246,11 +250,11 @@ As the user moving their heads (or other gestures according to the models which 
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
-<h3 id="contributors"><font face="Arial Black" size="5"> Contributors </font> <a name="crawler"></a></h3>
-<p><font face="Times" size="3"> Email: </font> <a href="mailto:kangchen@fel.cvut.cz" target="_blank" rel="noopener">kangchen@fel.cvut.cz</a> or <a href="mailto:kangkangsome@gmail.com" target="_blank" rel="noopener">kangkangsome@gmail.com</a><br>
-<font face="Times" size="3"> Address: </font> G-203, Na Zderaze 269/4, Prague, Czech Republic<br>
-<font face="Times" size="3"> Phone: </font> +420-774-318-802</p>
+<h3 id="contributors"><a href="#Contributors" class="headerlink" title=" Contributors  "></a><font face="Arial Black" size="5"> Contributors </font> <a name="crawler"></a></h3><p><font face="Times" size="3"> Email: </font> kangchen@fel.cvut.cz or kangkangsome@gmail.com</p>
+<p><font face="Times" size="3"> Address: </font> G-203, Na Zderaze 269/4, Prague, Czech Republic</p>
+<p><font face="Times" size="3"> Phone: </font> +420-774-318-802</p>
 <p>⚠️ This is a prototype made as a side project so the code is not production-ready. Its performance is not optimised so the first load can take a while. I developed and tested it on a Macbook Pro and iPad Pro so if you try it on another device and it doesn’t work or doesn’t look super responsive, I don’t intend to fix it. With that in mind, here’s the live demo above that works with both head and body movements. ⚠️</p>
 
                 
