@@ -141,14 +141,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -291,7 +291,7 @@ Pending... </font>
 
 <p></p>
 <h5 id="2-ongoing-research"><font face="Bodoni Bd BT" color="grey" size="3"> 2. Ongoing Research </font></h5>
-<p>There is an unsuccessful example which can present our onging research. The main reason is that our medical dialogue dataset was incompletely labeled.</p>
+<p>There is an unsuccessful example which can present our onging research. We trained our incompletely labeled medical dialogue dataset with t5 (text-to-text transfer transformer) model, but the performance is not acceptabel. The next step is to relabel our dataset again and fine-tune t5 model.</p>
 <blockquote>
 <p><font face="Black" color="black" size="3"> Doctor: </font>Do you have a stomach ache every time after eating, is your stomach bloated? Has the constipation started recently, or have you been constipated all the time?<br>
 <font face="Black" color="black" size="3"> Patients: </font>It will be very bloated after eating…it will also be bloated and painful at other times! It also started this time… I was not constipated before.<font face="Times" color="red" size="3"> Detected Symptoms: </font> [‘asymptomatic’]<br>
