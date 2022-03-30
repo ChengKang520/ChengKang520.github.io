@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Medical Chatbot - Cheng Kang | Blog
+          Embedding Neural Networks into Devices (A) - Cheng Kang | Blog
         
     </title>
 
-    <link rel="canonical" href="https://ChengKang520.github.io/article/medical_chatbot/">
+    <link rel="canonical" href="https://ChengKang520.github.io/article/embedded_devices_nn/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/article_header_chatbot5.jpeg')
+            background-image: url('/img/article_header/casual.jpg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Computer Science" title="Computer Science">Computer Science</a>
+                              <a class="tag" href="/tags/#Engineering" title="Engineering">Engineering</a>
                             
                         </div>
-                        <h1>Medical Chatbot</h1>
-                        <h2 class="subheading">Medical Chatbot</h2>
+                        <h1>Embedding Neural Networks into Devices (A)</h1>
+                        <h2 class="subheading">Embedding CNNs</h2>
                         <span class="meta">
                             Posted by Cheng Kang on
-                            2022-02-17
+                            2019-11-19
                         </span>
                     </div>
                 
@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -212,67 +212,14 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>This blog aims to show you how to get your own medical chatbot.</p>
-<ol>
-<li><a href="#crawler">Web Crawler</a></li>
-<li><a href="#sota_models">NLP SOTA Models</a></li>
-<li><a href="#medical_corpus">Train Medical Dialogues</a></li>
-<li><a href="#chatbot">Deploy a Medical Chatbot</a></li>
-</ol>
-<hr>
-<h3 id="web-crawler"><font face="黑体" size="5"> Web Crawler </font> <a name="crawler"></a></h3>
-<font face="Times New Roman" size="4"> 
-There is an internet medical diagnosis and treatment suggestion system in China, which can instantly chat with patients. We developed a web crawlerr to exract the medical dialogues between patients and doctors from this website. As we know, there in no such a proper corpus which can train a chatbot with an instant response. Hope anyone know other good corpus or dialogues, please contact us.
-</font>
-<h4 id="step-1">Step 1:</h4>
-<p>There are 34 provinces in China, and the list provs in Line 34 is the province list.<br>
-Extract the information from this website with:<br>
-医生姓名(Doctors’ name),<br>
-医院科室(Facalties),<br>
-信息中心页(Information Center Links),<br>
-地区(Regions). And save the file as ‘step-1-result.csv’.</p>
-<p>In <a href>step-1-doctorReferLinks.py</a> from Line 147 to Line 150, you can choose which category you want, for example, mental diseases or psychological illness (精神, 心理 diseases) :</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">includedDepartmentKeywords = [<span class="string">'精神'</span>, <span class="string">'心理'</span>]</span><br><span class="line">excludedDepartmentKeywords = []</span><br><span class="line">includedHospitalKeywords   = [<span class="string">'精神'</span>, <span class="string">'心理'</span>]</span><br><span class="line">excludedHospitalKeywords   = []</span><br></pre></td></tr></table></figure>
-<h4 id="step-2">Step 2:</h4>
-<p>You can further extract more information by <a href>step-2-doctorMoreLinks.py</a>, which includes:<br>
-医生姓名(Doctors’ name),<br>
-医生ID(Doctors’ ID),	<br>
-个人网站(Personal Webpage),<br>
-评价分享链接(Evaluation Links),<br>
-医院科室(Faculties),<br>
-信息中心页(Information Center Links),<br>
-地区(Regions). Input the file ‘step-1-result.csv’ saved from the Step 1 and output the file as ‘step-2-result.csv’</p>
-<h4 id="step-3">Step 3:</h4>
-<p>We can then develop a web crawler now. Firstly, you should get an account:</p>
-<pre><code>config = {
-    &quot;url&quot;: {
-      &quot;login&quot;: &quot;https://passport.haodf.com/user/showlogin&quot;,
-      &quot;target&quot;: &quot;https://www.haodf.com/bingcheng/8822504854.html&quot;  # https://www.haodf.com/kanbing/6478777497.html
-    },
-    &quot;account&quot;: {
-      &quot;username&quot;: &quot;userID&quot;,
-      &quot;password&quot;: &quot;passward&quot;
-    }
-}
-</code></pre>
-<p>And then, according to the structure of this web’s HTML, you can extract the dialogues.<br>
-Finally, save them as json files. (<font face="Bodoni Bd BT" color="grey" size="4"> You should update this codes, because this website is updating frequentely</font>).</p>
-<h4 id="step-4">Step 4:</h4>
-<p>Translate the Chinese language to English. The efficient way is to use <a href="https://pypi.org/project/pygtrans/" target="_blank" rel="noopener">pygtrans</a>, because it has a wider stream than other packages. In line 19, you can make the threshold bigger according to the speed (&lt;100000).</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from pygtrans import Translate</span><br><span class="line">import json</span><br><span class="line">from time import sleep</span><br><span class="line">client = Translate()</span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">"__main__"</span><span class="symbol">:</span></span><br><span class="line"></span><br><span class="line">    translated_data = []</span><br><span class="line">    raw_data = []</span><br><span class="line">    flag_num = <span class="number">0</span></span><br><span class="line">    flag_num_IN = <span class="number">0</span></span><br><span class="line">    data_dumped = []</span><br><span class="line">    print(<span class="string">'START ########################################################## START'</span>)</span><br><span class="line">    with open(<span class="string">'train_data.json'</span>, <span class="string">'rb'</span>) as <span class="symbol">json_file:</span></span><br><span class="line">        student_loaded = json.load(json_file)</span><br><span class="line">        <span class="keyword">for</span> dialogue_seg <span class="keyword">in</span> <span class="symbol">student_loaded:</span></span><br><span class="line">            <span class="keyword">for</span> dialogue_data <span class="keyword">in</span> <span class="symbol">dialogue_seg:</span></span><br><span class="line">                flag_num += <span class="number">1</span></span><br><span class="line">                raw_data.append(dialogue_data)</span><br><span class="line">                <span class="keyword">if</span> (flag_num &gt;= <span class="number">10000</span>) <span class="keyword">or</span> (dialogue_seg == student_loaded[-<span class="number">1</span>] <span class="keyword">and</span> dialogue_data == dialogue_seg[-<span class="number">1</span>])<span class="symbol">:</span></span><br><span class="line">                    print(<span class="string">'IN ########################################################## IN'</span>)</span><br><span class="line">                    flag_num_IN += <span class="number">1</span></span><br><span class="line">                    print(flag_num_IN)</span><br><span class="line">                    data = client.translate(raw_data, target=<span class="string">'en'</span>)</span><br><span class="line">                    <span class="keyword">for</span> i_sentence <span class="keyword">in</span> range(flag_num)<span class="symbol">:</span></span><br><span class="line">                        translated_data.append(data[i_sentence].translatedText)</span><br><span class="line"></span><br><span class="line">                    flag_num = <span class="number">0</span></span><br><span class="line">                    raw_data = []</span><br><span class="line">                    sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'END ########################################################## END'</span>)</span><br><span class="line"></span><br><span class="line">    with open(<span class="string">'train_data_translated.json'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) as <span class="symbol">data_dumped:</span></span><br><span class="line">        json.dump(translated_data, data_dumped)</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="nlp-sota-models-text-generation"><font face="黑体" size="5"> NLP SOTA Models: Text Generation </font> <a name="medical_corpus"></a></h3>
-<p>You can find more Text Generation models from <a href="https://huggingface.co/models?pipeline_tag=text2text-generation&amp;sort=downloads" target="_blank" rel="noopener">Hugging Face</a>. In this blog, we used T5 to trian this medical dialogue.</p>
-<hr>
-<h3 id="train-medical-dialogues"><font face="黑体" size="5"> Train Medical Dialogues </font> <a name="sota_models"></a></h3>
-<p>Before training, we rearranged the sequence of questons and answers in script <a href>data_preprocessing.py</a>. After that, we separate the dataset into train.source, train.target, test.source, test.target, val.source, val.target.</p>
-<p>Config of T5 in <a href>t5_medical_dialogue_generation.py</a>:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ARGS_STR = <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">--data_dir=./ \</span></span><br><span class="line"><span class="string">--model_name_or_path=t5-base \</span></span><br><span class="line"><span class="string">--learning_rate=3e-4 \</span></span><br><span class="line"><span class="string">--train_batch_size=32 \</span></span><br><span class="line"><span class="string">--output_dir=./output/base/ \</span></span><br><span class="line"><span class="string">--do_train \</span></span><br><span class="line"><span class="string">--n_gpu=4 \</span></span><br><span class="line"><span class="string">--num_train_epochs=10 \</span></span><br><span class="line"><span class="string">--max_source_length=80 \</span></span><br><span class="line"><span class="string">--eval_batch_size=3 \</span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br></pre></td></tr></table></figure>
-<p>This is the batch file with the developing environment:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh</span></span><br><span class="line"><span class="comment">#SBATCH --partition=gpuextralong</span></span><br><span class="line"><span class="comment">#SBATCH --time=504:00:00</span></span><br><span class="line"><span class="comment">#SBATCH --gres=gpu:4</span></span><br><span class="line"><span class="comment">#SBATCH --mem-per-gpu=32000</span></span><br><span class="line"><span class="comment">#SBATCH --err=t5base_medical_dialogue_generation.err </span></span><br><span class="line"><span class="comment">#SBATCH --out=t5base_medical_dialogue_generation.out </span></span><br><span class="line">/bin/hostname</span><br><span class="line">srun -l /bin/hostname</span><br><span class="line">srun -l /bin/pwd</span><br><span class="line">ml load Python/<span class="number">3.7</span>.<span class="number">2</span>-fosscuda-<span class="number">2019</span>a</span><br><span class="line">cd python_script/t5-QandA-main/</span><br><span class="line">source TestEnv/bin/activate</span><br><span class="line">python t5_medical_dialogue_generation.py</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="deploy-a-medical-chatbot"><font face="黑体" size="5"> Deploy a Medical Chatbot </font> <a name="chatbot"></a></h3>
-<p>Chatbot in you computer by excuting <a href>gui_chatbot.py</a>.</p>
+                <p>The aim of this project is to design a neural network model to recognize human activities and then use Tensorflow Lite which is a kind of deep learning framework focused on embedded devices to deploy the designed model into the microcontroller. The following objectives should be done:<br>
+<font face="Arial Black" size="3"> A.	Follow the tutorial to get the simple audio recognition with the CNN Model and learn Tensorflow Lite about how to load deep learning into the device.</font><br>
+<font face="Black" size="3"> B.	Design the deep learning models for human activities recognition (HAR) and make sure it can be worked in the microcontroller.</font><br>
+<font face="Black" size="3"> C.	Test the microcontroller accelerometer and transfer it as the model input.</font><br>
+<font face="Black" size="3"> D.	Using Make to build binary file and deploy it to the microcontroller.</font><br>
+<font face="Black" size="3"> E.	Measure model and microcontroller in terms of accuracy, power consumption and memory footprint.</font></p>
+<p><span style="font-family:Papyrus; font-size:2em;"> Pending…<br>
+</span></p>
 
                 
 
@@ -281,12 +228,12 @@ Finally, save them as json files. (<font face="Bodoni Bd BT" color="grey" size="
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/tfjs_runing_rabbit/" data-toggle="tooltip" data-placement="top" title="Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js">&larr; Previous Post</a>
+                            <a href="/article/deeplearning-assignment/" data-toggle="tooltip" data-placement="top" title="Deep Learning Basic Knowledge">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/pet_vitamin/" data-toggle="tooltip" data-placement="top" title="欧洲宠物用品-代购">Next Post &rarr;</a>
+                            <a href="/article/hrv_sleep_pressure/" data-toggle="tooltip" data-placement="top" title="HRV for Sleep Scoring and Pressure Evaluating">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -336,7 +283,7 @@ Finally, save them as json files. (<font face="Bodoni Bd BT" color="grey" size="
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#web-crawler"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> Web Crawler  </span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-1"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Step 1:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Step 2:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Step 3:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Step 4:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nlp-sota-models-text-generation"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> NLP SOTA Models: Text Generation  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#train-medical-dialogues"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Train Medical Dialogues  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#deploy-a-medical-chatbot"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> Deploy a Medical Chatbot  </span></a></li></ol>
+          <ol class="nav">none</ol>
         
         </div>
       </aside>
@@ -356,7 +303,7 @@ Finally, save them as json files. (<font face="Bodoni Bd BT" color="grey" size="
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Computer Science" title="Computer Science">Computer Science</a>
+                          <a class="tag" href="/tags/#Engineering" title="Engineering">Engineering</a>
                         
                     </div>
                 </section>
@@ -621,9 +568,9 @@ Finally, save them as json files. (<font face="Bodoni Bd BT" color="grey" size="
     <script type="text/javascript">
     var disqus_shortname = 'chengkang520';
     var disqus_config = function () {
-        this.page.url = 'https://ChengKang520.github.io/article/medical_chatbot/';
-        this.page.identifier = '/article/medical_chatbot/';
-        this.page.title = 'Medical Chatbot';
+        this.page.url = 'https://ChengKang520.github.io/article/embedded_devices_nn/';
+        this.page.identifier = '/article/embedded_devices_nn/';
+        this.page.title = 'Embedding Neural Networks into Devices (A)';
     };
     (function(){
       var d = document;

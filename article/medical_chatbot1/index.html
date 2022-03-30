@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          欧洲宠物用品-代购 - Cheng Kang | Blog
+          Medical Conversation and Diagnosis Chatbot: Conversation (A) - Cheng Kang | Blog
         
     </title>
 
-    <link rel="canonical" href="https://ChengKang520.github.io/article/pet_vitamin/">
+    <link rel="canonical" href="https://ChengKang520.github.io/article/medical_chatbot1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/dog_cat.jpg')
+            background-image: url('/img/article_header/article_header_chatbot5.jpeg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#宠物用品销售" title="宠物用品销售">宠物用品销售</a>
+                              <a class="tag" href="/tags/#Computer Science" title="Computer Science">Computer Science</a>
                             
                         </div>
-                        <h1>欧洲宠物用品-代购</h1>
-                        <h2 class="subheading">海外代购</h2>
+                        <h1>Medical Conversation and Diagnosis Chatbot: Conversation (A)</h1>
+                        <h2 class="subheading">Medical Chatbot</h2>
                         <span class="meta">
                             Posted by Cheng Kang on
-                            2022-01-14
+                            2022-03-14
                         </span>
                     </div>
                 
@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -212,155 +212,82 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <!-- <font face="华文琥珀" size="5"> 店铺不断完善中...（本人目前在国内，货是背回来的） </font> -->
-<!-- <font face="华文行楷" size="4"> 本店会根据订单要求，不断添加和更新欧洲宠物食品药物列表。每两个星期采购并下单一次，如果合计订单达到一定数额会立刻下单。 </font>
- 下单之前最好对比一下京东淘宝价格，以及包装。国内大部分消费者对于样式不熟，容易高价买到便宜的样款。 -->
+                <p><font face="Times" size="5"> This blog aims to show you how to get your own medical chatbot. There are two parts: </font><br>
+<font face="Arial Black" size="4"> A. Medical Conversation with Patients</font><br>
+<font face="Black" size="4"> B. Symptomes Extraction and Diseases Diagnozing </font></p>
 <hr>
 <ol>
-<li><a href="#%E7%89%A9%E5%93%81">宠物用品种类种类</a></li>
-<li><a href="#%E6%9D%A5%E6%BA%90">商品来源</a></li>
-<li><a href="#%E6%B8%85%E5%8D%95">本次购物清单</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F">联系方式</a></li>
-<li><a href="#%E7%94%B3%E6%98%8E">重要申明</a></li>
+<li><a href="#crawler">Web Crawler</a></li>
+<li><a href="#sota_models">NLP SOTA Models: Conversation</a></li>
+<li><a href="#train_medical_model">Train Your Medical Conversational Model</a></li>
 </ol>
+<h3 id="web-crawler"><font face="黑体" size="5"> Web Crawler </font> <a name="crawler"></a></h3>
+<font face="Times New Roman" size="4"> 
+<p>There are two availabel Medical Dialogues you can directly use to generate your own NLP model: <a href="https://drive.google.com/drive/folders/11sglwm6-cY7gjeqlZaMxL_MDKDMLdhym" target="_blank" rel="noopener">MedDialog dataset (Chinese)</a> and <a href="https://drive.google.com/drive/folders/1g29ssimdZ6JzTST6Y8g6h-ogUNReBtJD?usp=sharing" target="_blank" rel="noopener">MedDialog dataset (English)</a>. The authors developed their own web crawler but you should update these below codes, because these websites are updating frequentely.</p>
+<p>If want to develop your own web crawler, you can try our framework. There is an internet medical diagnosis and treatment suggestion system in China, which can instantly chat with patients. We developed a web crawlerr to exract the medical dialogues between patients and doctors from this website. As we know, there in no such a proper corpus which can train a chatbot with an instant response. Finally, save them as json files.</p>
+</font>
+<h4 id="step-1">Step 1:</h4>
+<p>There are 34 provinces in China, and the list provs in Line 34 is the province list.<br>
+Extract the information from this website with:<br>
+医生姓名(Doctors’ name),<br>
+医院科室(Facalties),<br>
+信息中心页(Information Center Links),<br>
+地区(Regions). And save the file as ‘step-1-result.csv’.</p>
+<p>In <a href="https://github.com/ChengKang520/Medical-Dialogue-Chatbot/tree/main/Crawler" target="_blank" rel="noopener">step-1-doctorReferLinks.py</a> from Line 147 to Line 150, you can choose which category you want, for example, mental diseases or psychological illness (精神, 心理 diseases) :</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">includedDepartmentKeywords = [<span class="string">'精神'</span>, <span class="string">'心理'</span>]</span><br><span class="line">excludedDepartmentKeywords = []</span><br><span class="line">includedHospitalKeywords   = [<span class="string">'精神'</span>, <span class="string">'心理'</span>]</span><br><span class="line">excludedHospitalKeywords   = []</span><br></pre></td></tr></table></figure>
+<h4 id="step-2">Step 2:</h4>
+<p>You can further extract more information by <a href="https://github.com/ChengKang520/Medical-Dialogue-Chatbot/tree/main/Crawler" target="_blank" rel="noopener">step-2-doctorMoreLinks.py</a>, which includes:<br>
+医生姓名(Doctors’ name),<br>
+医生ID(Doctors’ ID),	<br>
+个人网站(Personal Webpage),<br>
+评价分享链接(Evaluation Links),<br>
+医院科室(Faculties),<br>
+信息中心页(Information Center Links),<br>
+地区(Regions). Input the file ‘step-1-result.csv’ saved from the Step 1 and output the file as ‘step-2-result.csv’</p>
+<h4 id="step-3">Step 3:</h4>
+<p>We can then develop a web crawler now. Firstly, you should get an account:</p>
+<pre><code>config = {
+    &quot;url&quot;: {
+      &quot;login&quot;: &quot;https://passport.haodf.com/user/showlogin&quot;,
+      &quot;target&quot;: &quot;https://www.haodf.com/bingcheng/8822504854.html&quot;  # https://www.haodf.com/kanbing/6478777497.html
+    },
+    &quot;account&quot;: {
+      &quot;username&quot;: &quot;userID&quot;,
+      &quot;password&quot;: &quot;passward&quot;
+    }
+}
+</code></pre>
+<p>And then, according to the structure of this web’s HTML, you can extract the dialogues.</p>
+<h4 id="step-4">Step 4:</h4>
+<p>Translate the Chinese language to English. The efficient way is to use <a href="https://pypi.org/project/pygtrans/" target="_blank" rel="noopener">pygtrans</a>, because it has a wider stream than other packages. In line 19, you can make the threshold bigger according to the speed (&lt;100000).</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from pygtrans import Translate</span><br><span class="line">import json</span><br><span class="line">from time import sleep</span><br><span class="line">client = Translate()</span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">"__main__"</span><span class="symbol">:</span></span><br><span class="line"></span><br><span class="line">    translated_data = []</span><br><span class="line">    raw_data = []</span><br><span class="line">    flag_num = <span class="number">0</span></span><br><span class="line">    flag_num_IN = <span class="number">0</span></span><br><span class="line">    data_dumped = []</span><br><span class="line">    print(<span class="string">'START ########################################################## START'</span>)</span><br><span class="line">    with open(<span class="string">'train_data.json'</span>, <span class="string">'rb'</span>) as <span class="symbol">json_file:</span></span><br><span class="line">        student_loaded = json.load(json_file)</span><br><span class="line">        <span class="keyword">for</span> dialogue_seg <span class="keyword">in</span> <span class="symbol">student_loaded:</span></span><br><span class="line">            <span class="keyword">for</span> dialogue_data <span class="keyword">in</span> <span class="symbol">dialogue_seg:</span></span><br><span class="line">                flag_num += <span class="number">1</span></span><br><span class="line">                raw_data.append(dialogue_data)</span><br><span class="line">                <span class="keyword">if</span> (flag_num &gt;= <span class="number">10000</span>) <span class="keyword">or</span> (dialogue_seg == student_loaded[-<span class="number">1</span>] <span class="keyword">and</span> dialogue_data == dialogue_seg[-<span class="number">1</span>])<span class="symbol">:</span></span><br><span class="line">                    print(<span class="string">'IN ########################################################## IN'</span>)</span><br><span class="line">                    flag_num_IN += <span class="number">1</span></span><br><span class="line">                    print(flag_num_IN)</span><br><span class="line">                    data = client.translate(raw_data, target=<span class="string">'en'</span>)</span><br><span class="line">                    <span class="keyword">for</span> i_sentence <span class="keyword">in</span> range(flag_num)<span class="symbol">:</span></span><br><span class="line">                        translated_data.append(data[i_sentence].translatedText)</span><br><span class="line"></span><br><span class="line">                    flag_num = <span class="number">0</span></span><br><span class="line">                    raw_data = []</span><br><span class="line">                    sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'END ########################################################## END'</span>)</span><br><span class="line"></span><br><span class="line">    with open(<span class="string">'train_data_translated.json'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) as <span class="symbol">data_dumped:</span></span><br><span class="line">        json.dump(translated_data, data_dumped)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="1-宠物用品种类"><font face="黑体" size="5"> 1. 宠物用品种类: </font> <a name="物品"></a></h3>
-<h4 id="a宠物医疗保健"><font face="宋体" size="4"> A.宠物医疗保健: </font></h4>
-<style>
-table th:first-of-type {
-    width: 4cm;
-}
-table th:nth-of-type(2) {
-    width: 4cm;
-}
-table th:nth-of-type(3) {
-    width: 4cm;
-}
-table th:nth-of-type(4) {
-    width: 4cm;
-}
-</style>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">目前商品种类和型号</th>
-<th style="text-align:center">营养膏（Y1）</th>
-<th style="text-align:center">化毛膏旧款（H1）</th>
-<th style="text-align:center">化毛膏新款（H2）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><font face="黑体" size="4"> 俊宝Gimcat化毛膏 </font>      <font face="华文行楷" size="3"> （不同的颜色其实定价也不一样，我们会根据进价调整价格）。</font>  <font face="黑体" size="4"> --------- </font>  <font color="red" face="黑体" size="4"> 下单两个优惠8元，超过两个的让利四分。 </font></td>
-<td style="text-align:center"><img style="width:175px;height:230px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/146%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97.png" align="center"> <a href="https://item.jd.com/67957926234.html#crumb-wrap" target="_blank" rel="noopener">京东价格：109(两件一起))</a></td>
-<td style="text-align:center"><img style="width:175px;height:230px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/218%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97.png" align="center">  <a href="https://item.jd.com/67957926234.html#crumb-wrap" target="_blank" rel="noopener">京东价格：109(两件一起)</a></td>
-<td style="text-align:center"><img style="width:175px;height:230px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/253%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97.png" align="center">  <a href="https://item.jd.com/67957926234.html#crumb-wrap" target="_blank" rel="noopener">京东价格：109(两件一起)旧款</a></td>
-</tr>
-<tr>
-<td style="text-align:center"><mark> <font color="red" face="黑体" size="4"> 本店价格（包邮）： </font> <mark></mark></mark></td>
-<td style="text-align:center">78+22 (成本+小利)</td>
-<td style="text-align:center">86+24 (成本+小利)</td>
-<td style="text-align:center">96+26 (成本+小利)</td>
-</tr>
-<tr>
-<td style="text-align:center"><mark> <font face="黑体" size="4"> 剩余个数： </font> <mark></mark></mark></td>
-<td style="text-align:center">0个</td>
-<td style="text-align:center">14个</td>
-<td style="text-align:center">15个</td>
-</tr>
-</tbody>
-</table>
-<style>
-table th:first-of-type {
-    width: 4cm;
-}
-table th:nth-of-type(2) {
-    width: 4cm;
-}
-</style>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">GimCat官网广告</th>
-<th style="text-align:center">一位博主分享的营养膏，化毛膏购买使用攻略</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><iframe src="https://player.youku.com/embed/XMTc0ODU3MTU4MA==" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="240" width="320"> </iframe></td>
-<td style="text-align:center"><iframe src="//player.bilibili.com/player.html?aid=15263288&bvid=BV1qx411u7hL&cid=24842652&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="240" width="320"> </iframe></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.aspirantzhang.com/life/gimcat-paste.html" target="_blank" rel="noopener">GimCat 官方网站</a>  <br>  <br>  <a href="https://www.aspirantzhang.com/life/gimcat-paste.html" target="_blank" rel="noopener">一位博主关于国产和</a></td>
-<td style="text-align:center"><br> <font face="宋体" size="3">进度君：</font> <br> <font face="宋体" size="2">tiger可爱小片段 - 50秒 <br> tiger吃播1 - 1分36秒 <br> 营养膏介绍开始 - 3分04秒 <br> tiger吃播2 - 16分08秒</font> <br></td>
-</tr>
-</tbody>
-</table>
+<h3 id="nlp-sota-models-conversation"><font face="黑体" size="5"> NLP SOTA Models: Conversation </font> <a name="sota_models"></a></h3>
+<p>You can find more Text Generation models from <a href="https://huggingface.co/models?pipeline_tag=text2text-generation&amp;sort=downloads" target="_blank" rel="noopener">Hugging Face</a>. In this blog, we used GPT2 and T5 to respectively trian a medical conversational nlp model and a diagnosis model.</p>
+<p><font face="黑体" size="5"> Transformers: </font></p>
+<p><font face="黑体" size="5"> bertGPT: </font></p>
+<p><font face="黑体" size="5"> GPT-2: </font></p>
+<p><font face="黑体" size="5"> T5: </font></p>
 <hr>
-<h3 id="2-商品来源"><font face="黑体" size="5"> 2. 商品来源: </font> <a name="来源"></a></h3>
-<style>
-table th:first-of-type {
-    width: 2cm;
-}
-table th:nth-of-type(2) {
-    width: 10cm;
-}
-</style>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">种类</th>
-<th style="text-align:center"><a href="https://www.mall.cz" target="_blank" rel="noopener">MALL</a> 购物网址信息</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="https://www.mall.cz/vitaminy-kocky/gimpet-multi-vitamin-200g" target="_blank" rel="noopener">Gimpet MULTI-VITAMIN 200g</a>: <font face="Times" size="2"> <br> Gimcat Multivitamin Paste contains 12 vital vitamins necessary  for your cat , which regulate, accelerate and overall affect many of its vital functions.</font></td>
-<td style="text-align:center"><img style="width:720px;height:350px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/146%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97-price.png" align="right"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.mall.cz/vitaminy-kocky/gimpet-malt-soft-extra-200g" target="_blank" rel="noopener">Gimpet MALT-SOFT EXTRA 200g</a>: <font face="Times" size="2"> <br> Cats spend a lot of time caring for their fur, swallowing a lot of hair. In the stomach, some of these hairs can form rolls, sometimes also called trichobezoars, or hairballs.</font></td>
-<td style="text-align:center"><img style="width:720px;height:350px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/218%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97-price.png" align="right"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://www.mall.cz/granule-kocky/gimpet-kocka-pasta-malt-soft-extra-na-traveni-200g-100053125195" target="_blank" rel="noopener">Gimpet cat Pasta Malt-Soft Extra for digestion 200g</a>: <font face="Times" size="2"> <br> GimCat Malt-Soft Extra paste contains a unique Anti-Hairball Complex, which has a double effect. The combination of malt extract, quality oils and ballast substances supports the natural excretion of swallowed hair and helps reduce the formation of tufts. In addition, it helps prevent digestive problems associated with the formation of tufts of hair, and betaglucan helps prevent inflammation in the digestive system.</font></td>
-<td style="text-align:center"><img style="width:720px;height:350px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/253%E6%8D%B7%E5%85%8B%E5%85%8B%E6%9C%97-price.png" align="right"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="3-本次购物清单"><font face="黑体" size="5"> 3. 本次购物清单: </font> <a name="清单"></a></h3>
-<p>订单日期 - 2021年10月28日<br>
-<img src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/shopping_list.png"></p>
-<hr>
-<h3 id="4-联系方式"><font face="黑体" size="5"> 4. 联系方式: </font> <a name="联系方式"></a></h3>
-<style>
-table th:first-of-type {
-    width: 4cm;
-}
-table th:nth-of-type(2) {
-    width: 4cm;
-}
-</style>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">老杨: 17386460939</th>
-<th style="text-align:center">老康: 17386600939</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img style="width:150px;height:150px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/Yang-%E5%BE%AE%E4%BF%A1.jpg" alt="微信名片" align="center"></td>
-<td style="text-align:center"><img style="width:150px;height:150px" src="https://gitee.com/chengkang520/blog_picture/raw/master/Pet_product/Kang-%E5%BE%AE%E4%BF%A1.jpg" alt="微信名片" align="center"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="5重要申明"><font face="黑体" size="5"> 5.重要申明 : </font> <a name="申明"></a></h3>
-<p><font face="隶书" size="3"> 为了本店的长期发展，我们会将进价和运费成本公布出来，然后会将每笔订单所获利的20%捐给民间小动物保护中心（后续会贴出来）。 </font></p>
- <!-- 比如254/3.5(汇率)=72.6元 + 运费每一个均摊(100(起运费)+20(每公斤))/5=24,共计96.6一个，既定价96.6。 -->
-<p>本次捐献细节： 暂无。</p>
+<h3 id="train-your-medical-conversatinal-model"><font face="黑体" size="5"> Train Your Medical Conversatinal Model </font> <a name="train_medical_model"></a></h3>
+<p>After you get the medical dialogues which looks like below:</p>
+<blockquote>
+<blockquote>
+<p>Patient: clubfoot inversion.<br>
+Doctor: Use plaster to correct and treat as soon as possible, the sooner the better the effect.</p>
+</blockquote>
+<blockquote>
+<p>Patient: Skin beauty, there is a mole on the lip. In 2007, I had a laser in the old home town hospital, and then it became bigger. I had an electric cautery in a beauty salon 5 months ago, and it became bigger again. I want to consult Dr. Shen and I Is it still possible to remove moles in this case? Can it be cured in your hospital? At first it was the size of a needle tip, but now it is the size of a mung bean!<br>
+Doctor: It can be surgery or laser.</p>
+</blockquote>
+<blockquote>
+<p>Patient: Seborrheic dermatitis, there are many small spots in the T-shaped area, which are not easy to see in sunlight, but are particularly conspicuous in a brighter environment. Especially under the eyes and the bridge of the nose, it feels like a lot of pockmarks, and it is not smooth to the touch.<br>
+Doctor: It is recommended to go to the hospital for a diagnosis and then to treat it.</p>
+</blockquote>
+</blockquote>
+<p>You can find the training source codes from my github repository - <a href="https://github.com/ChengKang520/Medical-Dialogue-Chatbot/tree/main/gpt2" target="_blank" rel="noopener">Medical-Dialogue-Chatbot</a>.</p>
+<p>This is the batch file with the environment:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh</span></span><br><span class="line"><span class="comment">#SBATCH --partition=gpu</span></span><br><span class="line"><span class="comment">#SBATCH --time=24:00:00</span></span><br><span class="line"><span class="comment">#SBATCH --gres=gpu:4</span></span><br><span class="line"><span class="comment">#SBATCH --mem-per-gpu=32000</span></span><br><span class="line"><span class="comment">#SBATCH --job-name=GPT2-EN</span></span><br><span class="line"><span class="comment">#SBATCH --err=GPT2_EN.err </span></span><br><span class="line"><span class="comment">#SBATCH --out=GPT2_EN.out </span></span><br><span class="line"><span class="comment">#SBATCH --mail-user=kangkangsome<span class="doctag">@gmail</span>.com    # where send info about job</span></span><br><span class="line"><span class="comment">#SBATCH --mail-type=ALL              # what to send, valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL</span></span><br><span class="line">/bin/hostname</span><br><span class="line">srun -l /bin/hostname</span><br><span class="line">srun -l /bin/pwd</span><br><span class="line">ml load Python/<span class="number">3.7</span>.<span class="number">2</span>-fosscuda-<span class="number">2019</span>a</span><br><span class="line">cd /Medical-Dialogue-Chatbot/</span><br><span class="line">source TestEnvMDS/bin/activate</span><br><span class="line">cd gpt2/</span><br><span class="line">python gpt2_train_EN.py</span><br></pre></td></tr></table></figure>
 
                 
 
@@ -368,13 +295,9 @@ table th:nth-of-type(2) {
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/medical_chatbot/" data-toggle="tooltip" data-placement="top" title="Medical Chatbot">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/deeplearning-assignment/" data-toggle="tooltip" data-placement="top" title="Deep Learning Basic Knowledge">Next Post &rarr;</a>
+                            <a href="/article/tfjs_runing_rabbit/" data-toggle="tooltip" data-placement="top" title="Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -419,18 +342,12 @@ table th:nth-of-type(2) {
             <!-- Table of Contents -->
 
   
-    <style>
-      span.toc-nav-number{
-        display: none
-      }
-    </style>
-  
     
       <aside id="sidebar">
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-宠物用品种类"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> 1. 宠物用品种类:  </span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a宠物医疗保健"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"> A.宠物医疗保健: </span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-商品来源"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> 2. 商品来源:  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-本次购物清单"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> 3. 本次购物清单:  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-联系方式"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 4. 联系方式:  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5重要申明"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"> 5.重要申明 :  </span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#web-crawler"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> Web Crawler  </span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-1"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Step 1:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Step 2:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Step 3:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Step 4:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nlp-sota-models-conversation"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> NLP SOTA Models: Conversation  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#train-your-medical-conversatinal-model"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Train Your Medical Conversatinal Model  </span></a></li></ol>
         
         </div>
       </aside>
@@ -450,7 +367,7 @@ table th:nth-of-type(2) {
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#宠物用品销售" title="宠物用品销售">宠物用品销售</a>
+                          <a class="tag" href="/tags/#Computer Science" title="Computer Science">Computer Science</a>
                         
                     </div>
                 </section>
@@ -715,9 +632,9 @@ table th:nth-of-type(2) {
     <script type="text/javascript">
     var disqus_shortname = 'chengkang520';
     var disqus_config = function () {
-        this.page.url = 'https://ChengKang520.github.io/article/pet_vitamin/';
-        this.page.identifier = '/article/pet_vitamin/';
-        this.page.title = '欧洲宠物用品-代购';
+        this.page.url = 'https://ChengKang520.github.io/article/medical_chatbot1/';
+        this.page.identifier = '/article/medical_chatbot1/';
+        this.page.title = 'Medical Conversation and Diagnosis Chatbot: Conversation (A)';
     };
     (function(){
       var d = document;
