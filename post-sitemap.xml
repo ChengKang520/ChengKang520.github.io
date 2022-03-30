@@ -7,16 +7,16 @@
     </url>
 
     <url>
-        <loc>https://ChengKang520.github.io/article/hrv_sleep_pressure/</loc>
-        <lastmod>2022-03-30T11:08:21.450Z</lastmod>
+        <loc>https://ChengKang520.github.io/article/medical_chatbot1/</loc>
+        <lastmod>2022-03-30T14:14:10.128Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://ChengKang520.github.io/article/medical_chatbot1/</loc>
-        <lastmod>2022-03-30T11:00:50.054Z</lastmod>
+        <loc>https://ChengKang520.github.io/article/medical_chatbot2/</loc>
+        <lastmod>2022-03-30T14:14:02.490Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +24,15 @@
 
     <url>
         <loc>https://ChengKang520.github.io/article/embedded_devices_nn/</loc>
-        <lastmod>2022-03-30T10:07:28.924Z</lastmod>
+        <lastmod>2022-03-30T13:28:22.819Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://ChengKang520.github.io/article/hrv_sleep_pressure/</loc>
+        <lastmod>2022-03-30T13:27:50.274Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

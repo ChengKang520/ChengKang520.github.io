@@ -220,9 +220,12 @@
 <li><a href="#crawler">Web Crawler</a></li>
 <li><a href="#sota_models">NLP SOTA Models: Conversation</a></li>
 <li><a href="#train_medical_model">Train Your Medical Conversational Model</a></li>
+<li><a href="#test_medical_model">Test Your Model</a></li>
 </ol>
 <h3 id="web-crawler"><font face="黑体" size="5"> Web Crawler </font> <a name="crawler"></a></h3>
 <font face="Times New Roman" size="4"> 
+<p>This upper half aims to build a meidcal conversational dialogue system for automaticly medically responses, and to generate medical context consistent and medically meaningful responses conditioned on the dialogue history<a href="#refer-anchor-1"><sup>1,</sup></a><a href="#refer-anchor-2"><sup>2</sup></a>.</p>
+<p>According to Gururangan, Suchin et al<a href="#refer-anchor-3"><sup>3</sup></a>, when tailoring a pretrained model to the domain of a target task, a second phase of pretraining in-domain leads to performance gains. MedDialog<a href="#refer-anchor-4"><sup>4</sup></a> provides 3.4 million annotation-free conversations between patients and doctors, which could be used for domain-adaptive pretraining.</p>
 <p>There are two availabel Medical Dialogues you can directly use to generate your own NLP model: <a href="https://drive.google.com/drive/folders/11sglwm6-cY7gjeqlZaMxL_MDKDMLdhym" target="_blank" rel="noopener">MedDialog dataset (Chinese)</a> and <a href="https://drive.google.com/drive/folders/1g29ssimdZ6JzTST6Y8g6h-ogUNReBtJD?usp=sharing" target="_blank" rel="noopener">MedDialog dataset (English)</a>. The authors developed their own web crawler but you should update these below codes, because these websites are updating frequentely.</p>
 <p>If want to develop your own web crawler, you can try our framework. There is an internet medical diagnosis and treatment suggestion system in China, which can instantly chat with patients. We developed a web crawlerr to exract the medical dialogues between patients and doctors from this website. As we know, there in no such a proper corpus which can train a chatbot with an instant response. Finally, save them as json files.</p>
 </font>
@@ -288,12 +291,41 @@ Doctor: It is recommended to go to the hospital for a diagnosis and then to trea
 <p>You can find the training source codes from my github repository - <a href="https://github.com/ChengKang520/Medical-Dialogue-Chatbot/tree/main/gpt2" target="_blank" rel="noopener">Medical-Dialogue-Chatbot</a>.</p>
 <p>This is the batch file with the environment:</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh</span></span><br><span class="line"><span class="comment">#SBATCH --partition=gpu</span></span><br><span class="line"><span class="comment">#SBATCH --time=24:00:00</span></span><br><span class="line"><span class="comment">#SBATCH --gres=gpu:4</span></span><br><span class="line"><span class="comment">#SBATCH --mem-per-gpu=32000</span></span><br><span class="line"><span class="comment">#SBATCH --job-name=GPT2-EN</span></span><br><span class="line"><span class="comment">#SBATCH --err=GPT2_EN.err </span></span><br><span class="line"><span class="comment">#SBATCH --out=GPT2_EN.out </span></span><br><span class="line"><span class="comment">#SBATCH --mail-user=kangkangsome<span class="doctag">@gmail</span>.com    # where send info about job</span></span><br><span class="line"><span class="comment">#SBATCH --mail-type=ALL              # what to send, valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL</span></span><br><span class="line">/bin/hostname</span><br><span class="line">srun -l /bin/hostname</span><br><span class="line">srun -l /bin/pwd</span><br><span class="line">ml load Python/<span class="number">3.7</span>.<span class="number">2</span>-fosscuda-<span class="number">2019</span>a</span><br><span class="line">cd /Medical-Dialogue-Chatbot/</span><br><span class="line">source TestEnvMDS/bin/activate</span><br><span class="line">cd gpt2/</span><br><span class="line">python gpt2_train_EN.py</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="test-your-model"><font face="黑体" size="5"> Test Your Model </font> <a name="test_medical_model"></a></h3>
+<p>After crawling medical dialogues from two websites onlone, and merged them with <a href="https://github.com/UCSD-AI4H/Medical-Dialogue-System" target="_blank" rel="noopener">MedDialog</a> and <a href="https://mlpcp21.github.io/pages/challenge.html" target="_blank" rel="noopener">MedDG</a>. Althrough the Chatbot trained by GPT2 can generate reasonabel responses, the trustworthiness of medical Chatbot and the operability of the generated answers still under tests.</p>
+<p>Example 1:</p>
+<blockquote>
+<p><font face="Black" color="BLACK" size="4"> USER: </font>Seborrheic dermatitis, there are many small spots in the T-shaped area, which are not easy to see in sunlight, but are particularly conspicuous in a brighter environment. Especially under the eyes and the bridge of the nose, it feels like a lot of pockmarks, and it is not smooth to the touch.<br>
+<font face="Black" color="BLUE" size="4"> CHATBOT: </font>Sometimes the bumps are a little more painful, but it is also quite normal as well. It’s normal with acne because you’re not expecting. It’s normal at that point. If you are like me and were like me, it never occurred to us that all this scarring was inevitable. In all likelihood, we are pretty normal when we’re acne prone. I don’t think it was easy to cut all the bumps. In fact, I did it for a few years before having<br>
+<font face="Black" color="GREEN" size="4"> BUNCHMARK: </font>It is recommended to go to the hospital for a diagnosis and then to treat it.</p>
+</blockquote>
+<p>Example 2:</p>
+<blockquote>
+<p><font face="Black" color="BLACK" size="4"> USER: </font>I have undergone surgery for congenital heart disease. The child has suffered from syncope seven times. There is no cause for the onset. He just said that he felt uncomfortable before the attack, and then slowly fell down and lost consciousness.<br>
+<font face="Black" color="BLUE" size="4"> CHATBOT: </font>This was my youngest child. It is one of the more serious types of congenital heart disease, caused by a bacterial infection. This is extremely painful for him. It can lead to sudden death; he is unable to see and cannot keep up with the movements of his limbs. Tamil Nadu in 1992. Tamil Nadu, 2004 Indian Institute of Medical Sciences, Chennai Tamil Nadu Hospital, Chennai Tamil Nadu: Tamil Nadu. Tamil Nadu: The child who was born to me has also been seriously<br>
+<font face="Black" color="GREEN" size="4"> BUNCHMARK: </font>It is recommended to come to our hospital for further examination such as upright tilt test and flat panel test.</p>
+</blockquote>
+<hr>
+<p> <font face="Times" size="5"> Reference:</font></p>
+<div id="refer-anchor-1"></div>
+<p>[1] <a href="https://arxiv.org/abs/2010.07497" target="_blank" rel="noopener">Wenge Liu, Jianheng Tang, Jinghui Qin, Lin Xu, Zhen Li, Xiaodan Liang. MedDG: A Large-scale Medical Consultation Dataset for Building Medical Dialogue System. Arxiv, 2020.</a></p>
+<div id="refer-anchor-2"></div>
+<p>[2] <a href="https://arxiv.org/abs/2012.11988" target="_blank" rel="noopener">Shuai Lin, Pan Zhou, Xiaodan Liang, Jianheng Tang, Ruihui Zhao, Ziliang Chen, Liang Lin. Graph-Evolving Meta-Learning for Low-Resource Medical Dialogue Generation. In AAAI, 2021.</a></p>
+<div id="refer-anchor-3"></div>
+<p>[3] <a href="https://arxiv.org/abs/2004.10964" target="_blank" rel="noopener">Suchin Gururangan, Ana Marasović, Swabha Swayamdipta, Kyle Lo, Iz Beltagy, Doug Downey, Noah A. Smith. Don’t Stop Pretraining: Adapt Language Models to Domains and Tasks. In ACL, 2020.</a></p>
+<div id="refer-anchor-4"></div>
+<p>[4] <a href="https://arxiv.org/abs/2004.03329" target="_blank" rel="noopener"> Guangtao Zeng, Wenmian Yang, Zeqian Ju, Yue Yang, Sicheng Wang, Ruisi Zhang, Meng Zhou, Jiaqi Zeng, Xiangyu Dong, Ruoyu Zhang, Hongchao Fang, Penghui Zhu, Shu Chen, Pengtao Xie. MedDialog: Large-scale Medical Dialogue Datasets. In EMNLP, 2020.</a></p>
 
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/medical_chatbot2/" data-toggle="tooltip" data-placement="top" title="Medical Conversation and Diagnosis Chatbot: Diagnosis (B)">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -347,7 +379,7 @@ Doctor: It is recommended to go to the hospital for a diagnosis and then to trea
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#web-crawler"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> Web Crawler  </span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-1"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Step 1:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Step 2:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Step 3:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Step 4:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nlp-sota-models-conversation"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> NLP SOTA Models: Conversation  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#train-your-medical-conversatinal-model"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Train Your Medical Conversatinal Model  </span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#web-crawler"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> Web Crawler  </span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-1"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Step 1:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Step 2:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Step 3:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#step-4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Step 4:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nlp-sota-models-conversation"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> NLP SOTA Models: Conversation  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#train-your-medical-conversatinal-model"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Train Your Medical Conversatinal Model  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#test-your-model"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> Test Your Model  </span></a></li></ol>
         
         </div>
       </aside>
