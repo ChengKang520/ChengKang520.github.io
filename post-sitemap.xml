@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://ChengKang520.github.io/article/deeplearning-assignment/</loc>
+        <lastmod>2022-03-30T14:34:21.934Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://ChengKang520.github.io/article/medical_chatbot1/</loc>
         <lastmod>2022-03-30T14:14:10.128Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
     <url>
         <loc>https://ChengKang520.github.io/article/hrv_sleep_pressure/</loc>
         <lastmod>2022-03-30T13:27:50.274Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://ChengKang520.github.io/article/deeplearning-assignment/</loc>
-        <lastmod>2022-03-30T09:32:27.001Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
