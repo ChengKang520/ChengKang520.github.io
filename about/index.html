@@ -274,7 +274,10 @@ td, th {
 }
 </style>
 <h4 id="2-the-semantic-trap-when-scoring-images-or-symptoms">2. The Semantic Trap When Scoring Images or Symptoms <a name="Semantic_Scoring"></a></h4>
-<p>What is semantic scoring trap? For exaple, for detecting depression severities, as categories of depression severities are severe={24, 25, … , 34}; moderate={17, 18, …, 23}; mild={8, 9, …, 16}; and non-depressed={0, 1, …, 7}, which have many similar features, and finally result in the high difficulty to classify or score them. If there is one male patient who is suffering mild depression, and his SCID-CD score is 16, but actually, many phschologists tend to diagnose his real symptoms as not dangerous. We have two ideas on how to solve this issue. The first is that we can label the categories with scores. The second is to use some logics to measure the score that can represent the severity.</p>
+<p><font face="Bodoni Bd BT" color="grey" size="4"> A. Depressive Severity Detection</font></p>
+<p>What is semantic scoring trap? For exaple, for detecting depression severities, as categories of depression severities are <strong>severe</strong>={24, 25, … , 34}; <strong>moderate</strong>={17, 18, …, 23}; <strong>mild</strong>={8, 9, …, 16}; and <strong>non-depressed</strong>={0, 1, …, 7}, which have many similar features, and finally result in the high difficulty to classify or score them. If there is one male patient who is suffering mild depression, and his SCID-CD score is 16, but actually, many phschologists tend to diagnose his real symptoms as not dangerous. One typical way is to label the categories with scores, not only with the semantic description. Another solution is to design logic to infer the score that can represent the severity in detail when we could not get the severity scores.</p>
+<p><font face="Bodoni Bd BT" color="grey" size="4"> B. Breast Cancer Detection</font></p>
+<p>Another example is diagnosing BI-RADS in Curated Breast Imaging Subset of Digital Database of Screening Mammography (CBIS-DDSM) dataset. Overall BI-RADS assessment from 0 to 5 has been described in this dataset, including <strong>BI-RADS score 0</strong> (Incomplete cases), <strong>BI-RADS score 1</strong> (Negative cases), <strong>BI-RADS score 2</strong> (Benign cases), <strong>BI-RADS score 3</strong> (Probably Benign cases), <strong>BI-RADS score 4</strong> (Suspicious Abnormal cases) and <strong>BI-RADS score 5</strong> (Highly Suspicious Malignant cases). If there is a sub-score (another score from 0 to 9 which can measure BI-RADS score 3 in detail) that can provide patients with comprehensive information, the diagnosis and treatment would become more precise and convenient.</p>
 <style>
 table th:first-of-type {
     width: 2cm;
@@ -409,11 +412,11 @@ table th:nth-of-type(2) {
             
         
             
-            <a href="/tags/#Computer Science" title="Computer Science" rel="3">Computer Science</a>
+            <a href="/tags/#Applications" title="Applications" rel="1">Applications</a>
             
         
             
-            <a href="/tags/#Applications" title="Applications" rel="1">Applications</a>
+            <a href="/tags/#Computer Science" title="Computer Science" rel="3">Computer Science</a>
             
         
     </div>
