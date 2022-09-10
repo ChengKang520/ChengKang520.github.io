@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js - Cheng Kang | Blog
+          Cheng Kang | Blog
         
     </title>
 
-    <link rel="canonical" href="https://ChengKang520.github.io/article/tfjs_runing_rabbit/">
+    <link rel="canonical" href="https://ChengKang520.github.io/archives/2022/09/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/9pafhcks-900.jpg')
-            /*post*/
+            background-image: url('/img/header_img/archives-widget.jpg')
+            /*page*/
         
     }
     
@@ -85,18 +85,10 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                              <a class="tag" href="/tags/#Applications" title="Applications">Applications</a>
-                            
-                        </div>
-                        <h1>Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js</h1>
-                        <h2 class="subheading">Game Applications of TensorFlow.js</h2>
-                        <span class="meta">
-                            Posted by Cheng Kang on
-                            2022-03-08
-                        </span>
+                    <div class="site-heading">
+                        <h1>Cheng Kang</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Personal Blog</span>
                     </div>
                 
 
@@ -199,231 +191,367 @@
 
 
     <!-- Main Content -->
-    <!-- Modify by Yu-Hsuan Yen -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <center><font face="Elephant" color="grey" size="6"> Running Rabbit by Your Body or Head Movement </font></center>
-<p><span style="font-family:Papyrus; font-size:2em;"> You can find the codes from this: </span><iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px" height="20px" src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=running_rabbit_tfjs&type=star&count=true"></iframe></p>
-
-<font face="Times New Roman" size="4"> 
-As the user moving their heads (or other gestures according to the models which users trained from the initial block), the runing rabbit move left and right, jump and duck to collect diamonds.
-<p>This is a 2D graphic game by using <a href="https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json" target="_blank" rel="noopener">mobilenet</a> in TensorFlow.js, employing VisibilityManager.js and TweenMax.min.js in this entertainment project.<br>
-</p></font><p></p>
-<p>You can find the codes from this <a href="https://github.com/ChengKang520/running_rabbit_tfjs" target="_blank" rel="noopener">Github Link</a>.</p>
-<ol>
-<li><a href="#train_model">Train Your Model</a></li>
-<li><a href="#running_rabbit">Running Rabbit</a></li>
-<li><a href="#contributors">Contributors</a></li>
-</ol>
-<hr>
-<h3 id="train-your-model"><font face="Arial Black" size="5"> Train Your Model </font> <a name="crawler"></a></h3>
-<p>You can use <a href="https://teachablemachine.withgoogle.com/train/image" target="_blank" rel="noopener">Teachable Machine</a> to train your models. For example, I used five catergories: “left”, “up”,  “right”,  “down”,  “forward”. After images recording and training, you should download the trained model, and there are model.json, weights.bin and metadata.json.</p>
-<hr>
-<h3 id="running-rabbit"><font face="Arial Black" size="5"> Running Rabbit </font> <a name="crawler"></a></h3>
-<p>Move the model files to ./assets and go back to the project root, then open Windows PowerShell to excute:</p>
-<blockquote>
-<p>python -m http.server</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Jump</th>
-<th style="text-align:center">Turn Left and Right</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://github.com/ChengKang520/running_rabbit_tfjs/blob/main/RuningRabbit_jump.gif?raw=true" alt="image"></td>
-<td style="text-align:center"><img src="https://github.com/ChengKang520/running_rabbit_tfjs/blob/main/RuningRabbit_left_right.gif?raw=true" alt="image"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="contributors"><font face="Arial Black" size="5"> Contributors </font> <a name="crawler"></a></h3>
-<p><font face="Times" size="3"> Email: </font> <a href="mailto:kangchen@fel.cvut.cz" target="_blank" rel="noopener">kangchen@fel.cvut.cz</a> or <a href="mailto:kangkangsome@gmail.com" target="_blank" rel="noopener">kangkangsome@gmail.com</a><br>
-<font face="Times" size="3"> Address: </font> G-203, Na Zderaze 269/4, Prague, Czech Republic<br>
-<font face="Times" size="3"> Phone: </font> +420-774-318-802</p>
-<p>⚠️ This is a prototype made as a side project so the code is not production-ready. Its performance is not optimised so the first load can take a while. I developed and tested it on a Macbook Pro and iPad Pro so if you try it on another device and it doesn’t work or doesn’t look super responsive, I don’t intend to fix it. With that in mind, here’s the live demo above that works with both head and body movements. ⚠️</p>
-
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
                 
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 archive">
+            <!-- 归档列表 -->
+            
+            
 
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/article/medical_chatbot1/" data-toggle="tooltip" data-placement="top" title="Medical Conversation and Diagnosis Chatbot: Conversation (A)">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/article/deeplearning-assignment/" data-toggle="tooltip" data-placement="top" title="Deep Learning Basic Knowledge">Next Post &rarr;</a>
-                        </li>
-                    
+             <!-- 归档列表 -->
+
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2022">
+                    <span class="tag-text">2022</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-08
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/nlp_instructions/" style="color: #0085a1">
+                        <span>
+                            Fine-Tune Language Models: Instruction Tuning
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/medical_chatbot2/" style="color: #0085a1">
+                        <span>
+                            Medical Conversation and Diagnosis Chatbot: Diagnosis (B)
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/embedded_devices_nn/" style="color: #0085a1">
+                        <span>
+                            Embedding Neural Networks into Devices (A)
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-14
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/medical_chatbot1/" style="color: #0085a1">
+                        <span>
+                            Medical Conversation and Diagnosis Chatbot: Conversation (A)
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-08
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/tfjs_runing_rabbit/" style="color: #0085a1">
+                        <span>
+                            Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
                 </ul>
-
-                <br>
-
-                <!--打赏-->
-                
-                <!--打赏-->
-
-                <br>
-                <!--分享-->
-                
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
-                <!--分享-->
-                <br>                       
-                
-                <!-- require APlayer -->
-                
-
-                <!-- duoshuo Share start -->
-                
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
-
-                
-
             </div>
             
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
-
-  
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#train-your-model"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> Train Your Model  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#running-rabbit"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> Running Rabbit  </span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#contributors"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Contributors  </span></a></li></ol>
-        
-        </div>
-      </aside>
-    
-
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2021">
+                    <span class="tag-text">2021</span>
+                </span>
+                <ul>
                 
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-05
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/deeplearning-assignment/" style="color: #0085a1">
+                        <span>
+                            Deep Learning Basic Knowledge
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
                 
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#Applications" title="Applications">Applications</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://aid.felk.cvut.cz/" target="_blank">AID group in CTU</a></li>
-                    
-                        <li><a href="http://rci.cvut.cz/" target="_blank">Research Center for Informatics in CTU Prague</a></li>
-                    
-                        <li><a href="https://www.aic.fel.cvut.cz/" target="_blank">AI Center FEE CTU</a></li>
-                    
-                        <li><a href="https://bipl-uol.github.io/" target="_blank">BIPL at UoL</a></li>
-                    
                 </ul>
-                
             </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2018">
+                    <span class="tag-text">2018</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-20
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/hrv_sleep_pressure/" style="color: #0085a1">
+                        <span>
+                            HRV for Sleep Scoring and Pressure Evaluating
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+
+
         </div>
     </div>
-</article>
+</div>
 
+<style type="text/css">
 
+   @media (min-width: 992px) {
+   .archive {
+       margin-left: 8.33333333%;
+       padding-right: 26.333333%;
+   }
+}
+</style>
 
-
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
+<style type="text/css">
+   @media (min-width: 1200px){
+   .archive {
+   margin-left: 16.66666667%;
+   padding-right: 16.666667%;
+   }
+}
 </style>
 
 
-<!-- chrome Firefox 中文锚点定位失效-->
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-<!-- smooth scroll behavior polyfill  -->
-<script type="text/javascript" src="/js/smoothscroll.js"></script>
-<script>
-        $('#toc').on('click','a',function(a){
-            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
-            // console.log(window.navigator.userAgent,isChrome)
-                // if(isChrome) {
-                    // console.log(a.currentTarget.outerHTML);
-                    // console.log($(a.currentTarget).attr("href"));
-                    //跳转到指定锚点
-                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
-                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
-                // }
-        })  
-</script>
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+            <a href="/tags/#Computer Science" title="Computer Science" rel="4">Computer Science</a>
+            
+        
+            
+            <a href="/tags/#Engineering" title="Engineering" rel="2">Engineering</a>
+            
+        
+            
+            <a href="/tags/#Applications" title="Applications" rel="1">Applications</a>
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/avatar/ChengKang_profile.jpg" />
+        
+
+        
+            <p>天道酬勤, 地道酬善, 人道酬诚, 业道酬精</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+                <li>
+                    <a target="_blank" href="https://www.zhihu.com/people/kang-shi-fu-25-4">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                        </span>
+                    </a>
+                </li>
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/kang.cheng.108">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/ChengKang520">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+                <li>
+                    <a target="_blank"  href="https://www.linkedin.com/in/kang-cheng-9a7781180">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/article/nlp_instructions/">Fine-Tune Language Models: Instruction Tuning</a>
+        </li>
+      
+        <li>
+          <a href="/article/embedded_devices_nn/">Embedding Neural Networks into Devices (A)</a>
+        </li>
+      
+        <li>
+          <a href="/article/medical_chatbot2/">Medical Conversation and Diagnosis Chatbot: Diagnosis (B)</a>
+        </li>
+      
+        <li>
+          <a href="/article/medical_chatbot1/">Medical Conversation and Diagnosis Chatbot: Conversation (A)</a>
+        </li>
+      
+        <li>
+          <a href="/article/tfjs_runing_rabbit/">Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="http://aid.felk.cvut.cz/" target="_blank">AID group in CTU</a></li>
+    
+        <li><a href="http://rci.cvut.cz/" target="_blank">Research Center for Informatics in CTU Prague</a></li>
+    
+        <li><a href="https://www.aic.fel.cvut.cz/" target="_blank">AI Center FEE CTU</a></li>
+    
+        <li><a href="https://bipl-uol.github.io/" target="_blank">BIPL at UoL</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
 
 
     <!-- Footer -->
@@ -604,23 +732,6 @@ As the user moving their heads (or other gestures according to the models which 
 
 
 
-
-    <script type="text/javascript">
-    var disqus_shortname = 'chengkang520';
-    var disqus_config = function () {
-        this.page.url = 'https://ChengKang520.github.io/article/tfjs_runing_rabbit/';
-        this.page.identifier = '/article/tfjs_runing_rabbit/';
-        this.page.title = 'Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js';
-    };
-    (function(){
-      var d = document;
-      var dsq = d.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (d.head || d.body).appendChild(dsq);
-    })();
-    </script>
 
 
 
