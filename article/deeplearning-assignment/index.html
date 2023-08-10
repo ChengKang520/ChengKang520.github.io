@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -212,8 +212,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><span style="font-family:Papyrus; font-size:2em;"> You can find the codes from this: </span><iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px" height="20px" src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=deep_learning_AI&type=star&count=true"></iframe></p>
-
+                <p><span style="font-family:Papyrus; font-size:2em;"> You can find the codes from this: </span><iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px" height="20px" src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=deep_learning_AI&type=star&count=true">
+</iframe></p>
 <ol>
 <li><a href="#bp_and_overfittint">Backpropagation and Overfitting</a></li>
 <li><a href="#pytorch">Using Pytorch and CNN</a></li>
@@ -228,39 +228,30 @@
 </ol>
 <p>C:\Users\hunter\Documents\MyGithub\hexo-chengkang\source\img\article\DeepLearningImages\Lab1</p>
 <hr>
-<h2 id="backpropagation-and-overfitting">Backpropagation and Overfitting <a name="bp_and_overfittint"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Backpropagation_and_Overfitting" target="_blank" rel="noopener">github</a>.</p>
-<img style="height:400px" src="/img/article/DeepLearningImages/Lab1/Lab1_figure.jpg" align="center">
-<p>In the above figure, we set $w_{ij}^{(k)}$, and $k \in {(1,2)}$,  $i \in {(1,2,3,4)}$, $j \in {(1,2,3,4})$. The actication functions in the input and the output layers are linear functions: $f_{(0)}(s)=s$, $f_{(2)}(s)=s$, and the actication functions in the hidden layers is a linear functions: $f_{(0)}(s)=0.1s$. Then, the input is $(x_{1}^{(0)},x_{2}^{(0)})=(1,1)$, the expected output is $(d_{1},d_{2},d_{3})=(1,2,3)$, and the learning rate $\mu$ is $0.1$.</p>
-<h3 id="the-output-of-the-neural-network">The output of the neural network</h3>
-<h4 id="the-output-of-the-hidden-layer">The output of the hidden layer</h4>
-<p>$x_{1}^{(1)}=f_{(1)}(w_{11}^1x_{1}^{(0)}+w_{21}^1x_{2}^{(0)})=0.1 \times (1 \times 1+2 \times 1)=0.3$</p>
+<h2 id="backpropagation-and-overfitting"><a href="#Backpropagation-and-Overfitting" class="headerlink" title="Backpropagation and Overfitting "></a>Backpropagation and Overfitting <a name="bp_and_overfittint"></a></h2><p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Backpropagation_and_Overfitting" target="_blank" rel="noopener">github</a>.</p>
+<p><img style="height:400px" src="/img/article/DeepLearningImages/Lab1/Lab1_figure.jpg" align="center"></p>
+<p>In the above figure, we set $w_{ij}^{(k)}$, and $k \in {(1,2)}$,  $i \in {(1,2,3,4)}$, $j \in {(1,2,3,4})$. The actication functions in the input and the output layers are linear functions: $f_{(0)}(s)=s$, $f_{(2)}(s)=s$, and the actication functions in the hidden layers is a linear functions: $f_{(0)}(s)=0.1s$. Then, the input is $(x_{1}^{(0)},x_{2}^{(0)})=(1,1)$, the expected output is $(d_{1},d_{2},d_{3})=(1,2,3)$, and the learning rate $\mu$ is $0.1$. </p>
+<h3 id="the-output-of-the-neural-network"><a href="#The-output-of-the-neural-network" class="headerlink" title="The output of the neural network"></a>The output of the neural network</h3><h4 id="the-output-of-the-hidden-layer"><a href="#The-output-of-the-hidden-layer" class="headerlink" title="The output of the hidden layer"></a>The output of the hidden layer</h4><p>$x_{1}^{(1)}=f_{(1)}(w_{11}^1x_{1}^{(0)}+w_{21}^1x_{2}^{(0)})=0.1 \times (1 \times 1+2 \times 1)=0.3$</p>
 <p>$x_{2}^{(1)}=f_{(1)}(w_{12}^1x_{1}^{(0)}+w_{22}^1x_{2}^{(0)})=0.1 \times (1 \times 1+2 \times 1)=0.3$</p>
 <p>$x_{3}^{(1)}=f_{(1)}(w_{13}^1x_{1}^{(0)}+w_{23}^1x_{2}^{(0)})=0.1 \times (1 \times 1+2 \times 1)=0.3$</p>
 <p>$x_{4}^{(1)}=f_{(1)}(w_{14}^1x_{1}^{(0)}+w_{24}^1x_{2}^{(0)})=0.1 \times (1 \times 1+2 \times 1)=0.3$</p>
-<h4 id="the-output-of-the-output-layer">The output of the output layer</h4>
-<p>$x_{1}^{(2)}=f_{(2)}(w_{11}^2x_{1}^{(1)}+w_{21}^2x_{2}^{(1)}+w_{31}^2x_{3}^{(1)}+w_{41}^2x_{4}^{(1)})=1 \times (1 \times 0.3 \times 4)=1.2$</p>
+<h4 id="the-output-of-the-output-layer"><a href="#The-output-of-the-output-layer" class="headerlink" title="The output of the output layer"></a>The output of the output layer</h4><p>$x_{1}^{(2)}=f_{(2)}(w_{11}^2x_{1}^{(1)}+w_{21}^2x_{2}^{(1)}+w_{31}^2x_{3}^{(1)}+w_{41}^2x_{4}^{(1)})=1 \times (1 \times 0.3 \times 4)=1.2$</p>
 <p>$x_{2}^{(2)}=f_{(2)}(w_{12}^2x_{1}^{(1)}+w_{22}^2x_{2}^{(1)}+w_{32}^2x_{3}^{(1)}+w_{42}^2x_{4}^{(1)})=1 \times (2 \times 0.3 \times 4)=2.4$</p>
 <p>$x_{3}^{(2)}=f_{(2)}(w_{13}^2x_{1}^{(1)}+w_{23}^2x_{2}^{(1)}+w_{33}^2x_{3}^{(1)}+w_{43}^2x_{4}^{(1)})=1 \times (1 \times 0.3 \times 4)=1.2$</p>
-<h3 id="the-update-of-weights-during-the-backpropagation">The update of weights during the backpropagation</h3>
-<h4 id="the-error-of-the-output-layer">The error of the output layer</h4>
-<p>$\delta_{1}^{(2)}=(d_{1}-x_{1}^{(2)})f_{(2)}^{’}(s_{1}^{(2)})=(1-1.2) \times 1=-0.2$</p>
-<p>$\delta_{2}^{(2)}=(d_{2}-x_{2}^{(2)})f_{(2)}^{’}(s_{2}^{(2)})=(2-2.4) \times 1=-0.4$</p>
-<p>$\delta_{3}^{(2)}=(d_{3}-x_{3}^{(2)})f_{(2)}^{’}(s_{3}^{(2)})=(1-1.2) \times 1=-0.2$</p>
-<h4 id="the-error-of-the-hidden-layer">The error of the hidden layer</h4>
-<p>$\delta_{1}^{(1)}=f_{(1)}^{’}(s_{1}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{1k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
-<p>$\delta_{2}^{(1)}=f_{(1)}^{’}(s_{2}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{2k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
-<p>$\delta_{3}^{(1)}=f_{(1)}^{’}(s_{3}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{3k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
-<p>$\delta_{4}^{(1)}=f_{(1)}^{’}(s_{4}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{4k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
-<h4 id="the-weight-update-between-the-output-layer-and-the-hidden-layer">The weight update between the output layer and the hidden layer</h4>
-<p>$w_{11}^{(2)}[1]=w_{11}^{(2)}[0]+ \mu \delta_{1}^{(2)}x_{1}^{(1)}=1+0.1 \times (-0.2) \times 0.3=0.994$</p>
+<h3 id="the-update-of-weights-during-the-backpropagation"><a href="#The-update-of-weights-during-the-backpropagation" class="headerlink" title="The update of weights during the backpropagation"></a>The update of weights during the backpropagation</h3><h4 id="the-error-of-the-output-layer"><a href="#The-error-of-the-output-layer" class="headerlink" title="The error of the output layer"></a>The error of the output layer</h4><p>$\delta_{1}^{(2)}=(d_{1}-x_{1}^{(2)})f_{(2)}^{‘}(s_{1}^{(2)})=(1-1.2) \times 1=-0.2$</p>
+<p>$\delta_{2}^{(2)}=(d_{2}-x_{2}^{(2)})f_{(2)}^{‘}(s_{2}^{(2)})=(2-2.4) \times 1=-0.4$</p>
+<p>$\delta_{3}^{(2)}=(d_{3}-x_{3}^{(2)})f_{(2)}^{‘}(s_{3}^{(2)})=(1-1.2) \times 1=-0.2$</p>
+<h4 id="the-error-of-the-hidden-layer"><a href="#The-error-of-the-hidden-layer" class="headerlink" title="The error of the hidden layer"></a>The error of the hidden layer</h4><p>$\delta_{1}^{(1)}=f_{(1)}^{‘}(s_{1}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{1k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
+<p>$\delta_{2}^{(1)}=f_{(1)}^{‘}(s_{2}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{2k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
+<p>$\delta_{3}^{(1)}=f_{(1)}^{‘}(s_{3}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{3k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
+<p>$\delta_{4}^{(1)}=f_{(1)}^{‘}(s_{4}^{(1)}) \sum_{k=1}^{3} \delta_{k}^{(2)} w_{4k}^{(2)}=0.1 \times (-0.2 \times 1-0.4 \times 2-0.2 \times 1)=-0.12$</p>
+<h4 id="the-weight-update-between-the-output-layer-and-the-hidden-layer"><a href="#The-weight-update-between-the-output-layer-and-the-hidden-layer" class="headerlink" title="The weight update between the output layer and the hidden layer"></a>The weight update between the output layer and the hidden layer</h4><p>$w_{11}^{(2)}[1]=w_{11}^{(2)}[0]+ \mu \delta_{1}^{(2)}x_{1}^{(1)}=1+0.1 \times (-0.2) \times 0.3=0.994$</p>
 <p>then $w_{21}^{(2)}[1]=w_{31}^{(2)}[1]=w_{41}^{(2)}[1]=0.994$.</p>
 <p>$w_{12}^{(2)}[1]=w_{12}^{(2)}[0]+ \mu \delta_{2}^{(2)}x_{1}^{(1)}=2+0.1 \times (-0.4) \times 0.3=1.988$</p>
 <p>then $w_{22}^{(2)}[1]=w_{32}^{(2)}[1]=w_{42}^{(2)}[1]=1.988$.</p>
 <p>$w_{13}^{(2)}[1]=w_{13}^{(2)}[0]+ \mu \delta_{3}^{(2)}x_{1}^{(1)}=1+0.1 \times (-0.2) \times 0.3=0.994$</p>
 <p>then $w_{23}^{(2)}[1]=w_{33}^{(2)}[1]=w_{43}^{(2)}[1]=0.994$.</p>
-<h4 id="the-weight-update-between-the-input-layer-and-the-hidden-layer">The weight update between the input layer and the hidden layer</h4>
-<p>$w_{11}^{1}[1]=w_{11}^{1}[0]+ \mu \delta_{1}^{(1)}x_{1}^{(0)}=1+0.1 \times (-0.12) \times 1=0.988$</p>
+<h4 id="the-weight-update-between-the-input-layer-and-the-hidden-layer"><a href="#The-weight-update-between-the-input-layer-and-the-hidden-layer" class="headerlink" title="The weight update between the input layer and the hidden layer"></a>The weight update between the input layer and the hidden layer</h4><p>$w_{11}^{1}[1]=w_{11}^{1}[0]+ \mu \delta_{1}^{(1)}x_{1}^{(0)}=1+0.1 \times (-0.12) \times 1=0.988$</p>
 <p>$w_{12}^{1}[1]=w_{12}^{1}[0]+ \mu \delta_{2}^{(1)}x_{1}^{(0)}=1+0.1 \times (-0.12) \times 1=0.988$</p>
 <p>$w_{13}^{1}[1]=w_{13}^{1}[0]+ \mu \delta_{3}^{(1)}x_{1}^{(0)}=1+0.1 \times (-0.12) \times 1=0.988$</p>
 <p>$w_{14}^{1}[1]=w_{14}^{1}[0]+ \mu \delta_{4}^{(1)}x_{1}^{(0)}=1+0.1 \times (-0.12) \times 1=0.988$</p>
@@ -268,19 +259,17 @@
 <p>$w_{22}^{1}[1]=w_{22}^{1}[0]+ \mu \delta_{2}^{(1)}x_{2}^{(0)}=2+0.1 \times (-0.12) \times 1=1.988$</p>
 <p>$w_{23}^{1}[1]=w_{23}^{1}[0]+ \mu \delta_{3}^{(1)}x_{2}^{(0)}=2+0.1 \times (-0.12) \times 1=1.988$</p>
 <p>$w_{24}^{1}[1]=w_{24}^{1}[0]+ \mu \delta_{4}^{(1)}x_{2}^{(0)}=2+0.1 \times (-0.12) \times 1=1.988$</p>
-<p>Those above steps are the first round weights updating, and then continue the second, the third…until they satisfy the constrain requirement.</p>
+<p>Those above steps are the first round weights updating, and then continue the second, the third….until they satisfy the constrain requirement. </p>
 <hr>
-<h2 id="using-pytorch-and-cnn">Using Pytorch and CNN <a name="pytorch"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Using_AI_in_Applications" target="_blank" rel="noopener">github</a>.</p>
-<h3 id="getting-started">Getting Started</h3>
-<p>What is PyTorch: python front end, C++ libraries (A10), Target devices libraries (cuDNN). These will be useful resources for this task:</p>
+<h2 id="using-pytorch-and-cnn"><a href="#Using-Pytorch-and-CNN" class="headerlink" title="Using Pytorch and CNN "></a>Using Pytorch and CNN <a name="pytorch"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Using_AI_in_Applications" target="_blank" rel="noopener">github</a>.</p>
+<h3 id="getting-started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h3><p>What is PyTorch: python front end, C++ libraries (A10), Target devices libraries (cuDNN). These will be useful resources for this task:</p>
 <ul>
 <li><a href="https://pytorch.org/get-started/locally" target="_blank" rel="noopener">Installing PyTorch</a>. Develop and debug locally with CPU/GPU on any system. Choose a CUDA version, important to be able to write generic code.</li>
 <li><a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener">PyTorch docs</a>.</li>
 </ul>
 <p>Use this script <a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Using_Pytorch_and_CNN/mnist.py" target="_blank" rel="noopener"><span style="color: blue;">mnist.py</span></a>, and the <span style="font-family:Papyrus; font-size:1.1em;">history.pickle</span>,  the dictionary <span style="font-family:Papyrus; font-size:1.1em;">checkpoint_epoch1.checkpoint</span>, <span style="font-family:Papyrus; font-size:1.1em;">model_cuda.pth</span>, and the <span style="font-family:Papyrus; font-size:1.1em;">optimizer_cuda.pth</span> are saved in the result fold.</p>
-<h3 id="train-and-test">Train and Test</h3>
-<p>You can use this script <a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Using_Pytorch_and_CNN/plot_loss_train_curve.py" target="_blank" rel="noopener"><span style="color: blue;">plot_loss_train_curve.py</span></a> to draw loss and train curves. This figure below shows the accuracy curve and the loss curve. Red dot are the accuracy (loss in the right panel) curve using Test dataset after each one epoch. Black line is the accuracy curve (loss in the right panel) with  exponentially weighted average (EWA), and the partially transparant blue line is the raw accuracy (loss in the right panel) curve.</p>
+<h3 id="train-and-test"><a href="#Train-and-Test" class="headerlink" title="Train and Test"></a>Train and Test</h3><p>You can use this script <a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Using_Pytorch_and_CNN/plot_loss_train_curve.py" target="_blank" rel="noopener"><span style="color: blue;">plot_loss_train_curve.py</span></a> to draw loss and train curves. This figure below shows the accuracy curve and the loss curve. Red dot are the accuracy (loss in the right panel) curve using Test dataset after each one epoch. Black line is the accuracy curve (loss in the right panel) with  exponentially weighted average (EWA), and the partially transparant blue line is the raw accuracy (loss in the right panel) curve. </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -295,8 +284,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="tsne-confusion-matrix-and-roc-curve">tSNE, Confusion Matrix and ROC Curve</h3>
-<p>You can use this script <a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Using_Pytorch_and_CNN/plot_tSNE.py" target="_blank" rel="noopener"><span style="color: blue;">plot_tSNE.py</span></a> to tSNE, Confusion Matrix and ROC Curve. For the rSNE, although the boundary is not so perfect, after using nearest neighbor classifier, the accuracy rate can reach 0ver 90%.</p>
+</div>
+<h3 id="tsne-confusion-matrix-and-roc-curve"><a href="#tSNE-Confusion-Matrix-and-ROC-Curve" class="headerlink" title="tSNE, Confusion Matrix and ROC Curve"></a>tSNE, Confusion Matrix and ROC Curve</h3><p>You can use this script <a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Using_Pytorch_and_CNN/plot_tSNE.py" target="_blank" rel="noopener"><span style="color: blue;">plot_tSNE.py</span></a> to tSNE, Confusion Matrix and ROC Curve. For the rSNE, although the boundary is not so perfect, after using nearest neighbor classifier, the accuracy rate can reach 0ver 90%.</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -311,88 +301,52 @@
 </tr>
 </tbody>
 </table>
-<p>Confusion Matrix<br>
-<img src="/img/article/DeepLearningImages/Lab2/lab2_MNIST_cm1.jpg" align="center"></p>
-<p>ROC Curve<br>
-<img src="/img/article/DeepLearningImages/Lab2/lab2_Multi_class_ROC.jpg" align="center"></p>
+</div>
+<p>Confusion Matrix<br><img src="/img/article/DeepLearningImages/Lab2/lab2_MNIST_cm1.jpg" align="center"></p>
+<p>ROC Curve<br><img src="/img/article/DeepLearningImages/Lab2/lab2_Multi_class_ROC.jpg" align="center"></p>
 <hr>
-<h2 id="fine-tuning-a-pretrained-cnn">Fine-tuning a Pretrained CNN <a name="fine_tuning"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Fine_Tuning_a_Pretrained_CNN" target="_blank" rel="noopener">github</a>.</p>
+<h2 id="fine-tuning-a-pretrained-cnn"><a href="#Fine-tuning-a-Pretrained-CNN" class="headerlink" title="Fine-tuning a Pretrained CNN "></a>Fine-tuning a Pretrained CNN <a name="fine_tuning"></a></h2><p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Fine_Tuning_a_Pretrained_CNN" target="_blank" rel="noopener">github</a>.</p>
 <p>You can use one of the following models: <a href="https://pytorch.org/hub/pytorch_vision_vgg/" target="_blank" rel="noopener">VGG11</a> and <a href="https://pytorch.org/hub/pytorch_vision_squeezenet/" target="_blank" rel="noopener">Squeezenet</a>.</p>
 <p>Download one of the example datasets for this task:</p>
 <ol>
-<li>
-<p><a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/butterflies.zip" target="_blank" rel="noopener">Butterflies</a> (35Mb)</p>
+<li><p><a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/butterflies.zip" target="_blank" rel="noopener">Butterflies</a> (35Mb)</p>
 </li>
-<li>
-<p><a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/naturalist_mix1.zip" target="_blank" rel="noopener">iNaturalist mix1</a> (108Mb)</p>
+<li><p><a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/naturalist_mix1.zip" target="_blank" rel="noopener">iNaturalist mix1</a> (108Mb)</p>
 </li>
 </ol>
 <p>All of the datasets contain color images 224×224 pixels of 10 categories.</p>
-<p>For example, different learning rates can effect the accuracy and loss curves .</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Leaerning Rate</th>
-<th style="text-align:center">Accuracy Curve</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">lr=0.0001</td>
-<td style="text-align:center"><img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_0.0001.jpg" align="center"></td>
-</tr>
-<tr>
-<td style="text-align:center">lr=0.01</td>
-<td style="text-align:center"><img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_0.01.jpg" align="center"></td>
-</tr>
-<tr>
-<td style="text-align:center">lr=1</td>
-<td style="text-align:center"><img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_1.jpg" align="center"></td>
-</tr>
-</tbody>
-</table>
+<p>For example, different learning rates can effect the accuracy and loss curves .<br>Leaerning Rate                   |  Accuracy Curve<br>:————————————-:|:————————————-:<br>lr=0.0001  |  <img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_0.0001.jpg" align="center"><br>lr=0.01    |   <img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_0.01.jpg" align="center"><br>lr=1    |   <img src="/img/article/DeepLearningImages/Lab3/Lab3_Accuracy_curve_lr_1.jpg" align="center"></p>
 <hr>
-<h2 id="cnn-visualization-deep-features-attention-maps">CNN Visualization: Deep Features, Attention Maps <a name="visualization"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/CNN_Visualization" target="_blank" rel="noopener">github</a>.</p>
-<p>For this task we need just one image from ImageNet. We provide an image of a labrador retriever.</p>
-<img src="/img/article/DeepLearningImages/Lab4/Lab4_dog.jpg" align="center">
+<h2 id="cnn-visualization-deep-features-attention-maps"><a href="#CNN-Visualization-Deep-Features-Attention-Maps" class="headerlink" title="CNN Visualization: Deep Features, Attention Maps "></a>CNN Visualization: Deep Features, Attention Maps <a name="visualization"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/CNN_Visualization" target="_blank" rel="noopener">github</a>.</p>
+<p>For this task we need just one image from ImageNet. We provide an image of a labrador retriever. </p>
+<p><img src="/img/article/DeepLearningImages/Lab4/Lab4_dog.jpg" align="center"></p>
 <p>Besides we need the class codes for the 1000 categories in ImageNet. We provide it as text file <a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/labs/lab4_visualization/imagenet_classes.txt" target="_blank" rel="noopener">imagenet_classes.txt</a></p>
-<h3 id="visualise-the-input-image-and-the-transformed">Visualise the input image and the transformed</h3>
-<p>Load the image, apply the classifier and report the top 10 classes. Visualise the input image and the transformed (resampled &amp; normalised) tensor image. For the latter you may use the make_grid function mentioned above.</p>
+<h3 id="visualise-the-input-image-and-the-transformed"><a href="#Visualise-the-input-image-and-the-transformed" class="headerlink" title="Visualise the input image and the transformed"></a>Visualise the input image and the transformed</h3><p>Load the image, apply the classifier and report the top 10 classes. Visualise the input image and the transformed (resampled &amp; normalised) tensor image. For the latter you may use the make_grid function mentioned above.</p>
 <p>Feature maps.</p>
-<img src="/img/article/DeepLearningImages/Lab4/Lab4_graCAM.jpg" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab4/Lab4_graCAM.jpg" align="center"></p>
 <p>Gradien maps.</p>
-<img src="/img/article/DeepLearningImages/Lab4/Lab4_gradients.png" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab4/Lab4_gradients.png" align="center"></p>
 <p>Activations of a given layer (activation_max_layer6]).</p>
-<img src="/img/article/DeepLearningImages/Lab4/Lab4_activation_max_layer6.png" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab4/Lab4_activation_max_layer6.png" align="center"></p>
 <hr>
-<h2 id="adversarial-patterns-and-attacks">Adversarial Patterns and Attacks <a name="adversarial_attacks"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Adversarial_Attacks" target="_blank" rel="noopener">github</a>.</p>
-<p>In this task, you should choose a clean image which is correctly classified by the net (e.g. the image of the labrador retriever). And then, choose a target class different from the true class (e.g. 892: wall clock) and fix an ε &gt; 0. Implement a projected gradient ascent that aims to maximize the softmax output of the target class w.r.t. the input image, but constrains the search to the ε-ball around the clean image. You can find a text file about the category list: <a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/labs/lab4_visualization/imagenet_classes.txt" target="_blank" rel="noopener">imagenet_classes.txt</a>.<br>
-The sample is labrador retriever.</p>
-<img src="/img/article/DeepLearningImages/Lab5/Lab5_dog.jpg" align="center">
-<h3 id="fast-gradient-sign-method">Fast Gradient Sign Method</h3>
-<p>Let’s say we have an input X, which is correctly classified by our model ($M$). We want to find an adversarial example $\widehat{X}$, which is perceptually indistinguishable from original input X, such that it will be misclassified by that same model ($M$). We can do that by adding an adversarial perturbation ($\theta$) to the original input. Note that we want adversarial example to be indistinguishable from the original one. That can be achieved by constraining the magnitude of adversarial perturbation: $|X-\widehat{X} |_{\infty} \leqslant \epsilon$.</p>
-<p>That is, the $L_{\infty}$ norm should be less than epsilon. Here, $L_{\infty}$ denotes the maximum changes for all pixels in adversarial example. Fast Gradient Sign Method (FGSM) is a fast and computationally efficient method to generate adversarial examples. However, it usually has a lower success rate. The formula to find adversarial example is as follows:<br>
-$X^{adv}=X+\epsilon \cdot sign(\nabla_{X}J(X,Y_{true}))$</p>
-<p>Here,<br>
-$X$ = original (clean) input<br>
-$X^{adv}$  = adversarial input (intentionally designed to be misclassified by our model)<br>
-$ϵ$  = magnitude of adversarial perturbation<br>
-$\nabla_{X}J(X,Y_{true})$  = gradient of loss function w.r.t to input ($X$)</p>
+<h2 id="adversarial-patterns-and-attacks"><a href="#Adversarial-Patterns-and-Attacks" class="headerlink" title="Adversarial Patterns and Attacks "></a>Adversarial Patterns and Attacks <a name="adversarial_attacks"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Adversarial_Attacks" target="_blank" rel="noopener">github</a>.</p>
+<p>In this task, you should choose a clean image which is correctly classified by the net (e.g. the image of the labrador retriever). And then, choose a target class different from the true class (e.g. 892: wall clock) and fix an ε &gt; 0. Implement a projected gradient ascent that aims to maximize the softmax output of the target class w.r.t. the input image, but constrains the search to the ε-ball around the clean image. You can find a text file about the category list: <a href="https://cw.fel.cvut.cz/b202/_media/courses/bev033dle/labs/lab4_visualization/imagenet_classes.txt" target="_blank" rel="noopener">imagenet_classes.txt</a>.<br>The sample is labrador retriever.</p>
+<p><img src="/img/article/DeepLearningImages/Lab5/Lab5_dog.jpg" align="center"></p>
+<h3 id="fast-gradient-sign-method"><a href="#Fast-Gradient-Sign-Method" class="headerlink" title="Fast Gradient Sign Method"></a>Fast Gradient Sign Method</h3><p>Let’s say we have an input X, which is correctly classified by our model ($M$). We want to find an adversarial example $\widehat{X}$, which is perceptually indistinguishable from original input X, such that it will be misclassified by that same model ($M$). We can do that by adding an adversarial perturbation ($\theta$) to the original input. Note that we want adversarial example to be indistinguishable from the original one. That can be achieved by constraining the magnitude of adversarial perturbation: $|X-\widehat{X} |_{\infty} \leqslant \epsilon$. </p>
+<p>That is, the $L_{\infty}$ norm should be less than epsilon. Here, $L_{\infty}$ denotes the maximum changes for all pixels in adversarial example. Fast Gradient Sign Method (FGSM) is a fast and computationally efficient method to generate adversarial examples. However, it usually has a lower success rate. The formula to find adversarial example is as follows:<br>$X^{adv}=X+\epsilon \cdot sign(\nabla_{X}J(X,Y_{true}))$</p>
+<p>Here,<br>$X$ = original (clean) input<br>$X^{adv}$  = adversarial input (intentionally designed to be misclassified by our model)<br>$ϵ$  = magnitude of adversarial perturbation<br>$\nabla_{X}J(X,Y_{true})$  = gradient of loss function w.r.t to input ($X$)</p>
 <p>The targeted result is:</p>
-<img src="/img/article/DeepLearningImages/Lab5/Lab5_adversarial_attack.png" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab5/Lab5_adversarial_attack.png" align="center"></p>
 <hr>
-<h2 id="gaussian-variational-autoencoders">Gaussian Variational Autoencoders <a name="ve"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Gaussian_Variational_Autoencoders" target="_blank" rel="noopener">github</a>.</p>
+<h2 id="gaussian-variational-autoencoders"><a href="#Gaussian-Variational-Autoencoders" class="headerlink" title="Gaussian Variational Autoencoders "></a>Gaussian Variational Autoencoders <a name="ve"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Gaussian_Variational_Autoencoders" target="_blank" rel="noopener">github</a>.</p>
 <p>The sample is the MNIST.</p>
-<img src="/img/article/DeepLearningImages/Lab6/Lab6_sample_.png" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab6/Lab6_sample_.png" align="center"></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
 <th style="text-align:center">Input with Noise</th>
-<th style="text-align:center">Output with Noise</th>
+<th style="text-align:center">Output with Noise </th>
 </tr>
 </thead>
 <tbody>
@@ -402,13 +356,11 @@ $\nabla_{X}J(X,Y_{true})$  = gradient of loss function w.r.t to input ($X$)</p>
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
-<h2 id="metric-learning-for-covid-19">Metric Learning for COVID-19 <a name="metric_learning"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Metric_Learning" target="_blank" rel="noopener">github</a>.</p>
-<p>For an anchor (query) image $a$ let the <span style="font-family:Papyrus; font-size:1.1em;">positive</span> example $p$ be of the same class and a <span style="font-family:Papyrus; font-size:1.1em;">negative</span> example $n$ be of different class than $a$. We want that each <span style="font-family:Papyrus; font-size:1.1em;">positive</span> example to be closer to the anchor than all <span style="font-family:Papyrus; font-size:1.1em;">negative</span> examples (a margin $\alpha \geq 0$). The constraint is violated if $d(f_a,f_p)-d(f_a,f_n)+\alpha \geq 0$.<br>
-Accordingly we define the triplet loss as the total violation of these constraints:<br>
-$l_a=\sum_{p,n}max(d(f_a,f_p)-d(f_a,f_n)+\alpha)$<br>
-There you can find many <a href="https://kevinmusgrave.github.io/pytorch-metric-learning/losses/" target="_blank" rel="noopener">loss functions</a> for metric learning.</p>
+<h2 id="metric-learning-for-covid-19"><a href="#Metric-Learning-for-COVID-19" class="headerlink" title="Metric Learning for COVID-19 "></a>Metric Learning for COVID-19 <a name="metric_learning"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Metric_Learning" target="_blank" rel="noopener">github</a>.</p>
+<p> For an anchor (query) image $a$ let the <span style="font-family:Papyrus; font-size:1.1em;">positive</span> example $p$ be of the same class and a <span style="font-family:Papyrus; font-size:1.1em;">negative</span> example $n$ be of different class than $a$. We want that each <span style="font-family:Papyrus; font-size:1.1em;">positive</span> example to be closer to the anchor than all <span style="font-family:Papyrus; font-size:1.1em;">negative</span> examples (a margin $\alpha \geq 0$). The constraint is violated if $d(f_a,f_p)-d(f_a,f_n)+\alpha \geq 0$.<br>Accordingly we define the triplet loss as the total violation of these constraints:<br>$l_a=\sum_{p,n}max(d(f_a,f_p)-d(f_a,f_n)+\alpha)$<br>There you can find many <a href="https://kevinmusgrave.github.io/pytorch-metric-learning/losses/" target="_blank" rel="noopener">loss functions</a> for metric learning.</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -423,6 +375,8 @@ There you can find many <a href="https://kevinmusgrave.github.io/pytorch-metric-
 </tr>
 </tbody>
 </table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -437,9 +391,9 @@ There you can find many <a href="https://kevinmusgrave.github.io/pytorch-metric-
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
-<h2 id="chatbot-with-pretrained-models">Chatbot with Pretrained Models <a name="chatbot"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Chatbot_with_Pretrained_Models" target="_blank" rel="noopener">github</a>.</p>
+<h2 id="chatbot-with-pretrained-models"><a href="#Chatbot-with-Pretrained-Models" class="headerlink" title="Chatbot with Pretrained Models "></a>Chatbot with Pretrained Models <a name="chatbot"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Chatbot_with_Pretrained_Models" target="_blank" rel="noopener">github</a>.</p>
 <p>All of the necessary components to run this project are on the GitHub repository. Feel free to fork the repository and clone it to your local machine. Here’s a quick breakdown of the components:</p>
 <ul>
 <li><a href="https://github.com/ChengKang520/deep_learning_AI/blob/main/Chatbot_with_Pretrained_Models/train_chatbot.py" target="_blank" rel="noopener"><font face="黑体"><strong>train_chatbot.py</strong></font></a> — the code for reading in the natural language data into a training set and using a Keras sequential neural network to create a model</li>
@@ -451,61 +405,45 @@ There you can find many <a href="https://kevinmusgrave.github.io/pytorch-metric-
 </ul>
 <p><strong><em>NOTICE</em></strong>: there, if you find that your NLTK cannot import the word_tokenize, and you found that all the packages are installed correctly, See <a href="https://stackoverflow.com/questions/61041217/why-nltk-word-tokenize-is-not-working-even-after-doing-a-nltk-download-and-all-t" target="_blank" rel="noopener">link</a>. And add the command nltk.download(‘punkt’) to your script.</p>
 <hr>
-<h2 id="train-your-nlp-models-by-transformer">Train Your NLP Models by Transformer <a name="train_transformer"></a></h2>
-<p>You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Train_Your_NLP_Models_by_Transformer" target="_blank" rel="noopener">github</a>.</p>
-<p>Here is the original paper link about T5 <a href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener">https://arxiv.org/abs/1910.10683</a>. And</p>
-<h3 id="t5-fine-tuning">T5 fine-tuning</h3>
-<p>This notebook is to showcase how to fine-tune T5 model with Huggigface’s Transformers to solve different NLP tasks using text-2-text approach proposed in the T5 paper. For demo I chose 3 non text-2-text problems just to reiterate the fact from the paper that how widely applicable this text-2-text framework is and how it can be used for different tasks without changing the model at all.</p>
-<h4 id="setting-developing-environment">Setting Developing environment</h4>
-<p>The virtual developing python environment (python 3.6 + Pycharm).<br>
-Firstly, installing the virtual tool:</p>
+<h2 id="train-your-nlp-models-by-transformer"><a href="#Train-Your-NLP-Models-by-Transformer" class="headerlink" title="Train Your NLP Models by Transformer "></a>Train Your NLP Models by Transformer <a name="train_transformer"></a></h2><p> You can find the code from <a href="https://github.com/ChengKang520/deep_learning_AI/tree/main/Train_Your_NLP_Models_by_Transformer" target="_blank" rel="noopener">github</a>.</p>
+<p> Here is the original paper link about T5 <a href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener">https://arxiv.org/abs/1910.10683</a>. And </p>
+<h3 id="t5-fine-tuning"><a href="#T5-fine-tuning" class="headerlink" title="T5 fine-tuning"></a>T5 fine-tuning</h3><p>This notebook is to showcase how to fine-tune T5 model with Huggigface’s Transformers to solve different NLP tasks using text-2-text approach proposed in the T5 paper. For demo I chose 3 non text-2-text problems just to reiterate the fact from the paper that how widely applicable this text-2-text framework is and how it can be used for different tasks without changing the model at all.</p>
+<h4 id="setting-developing-environment"><a href="#Setting-Developing-environment" class="headerlink" title="Setting Developing environment"></a>Setting Developing environment</h4><p>The virtual developing python environment (python 3.6 + Pycharm).<br>Firstly, installing the virtual tool: </p>
 <blockquote>
-<p><em>pip3 install virtualenv</em></p>
+<p>_pip3 install virtualenv_</p>
 </blockquote>
-<p>And then,</p>
+<p>And then, </p>
 <blockquote>
-<p><em>virtualenv TestEnv</em></p>
+<p>_virtualenv TestEnv_</p>
 </blockquote>
 <p>or</p>
 <blockquote>
-<p><em>virtualenv --system-site-packages TestEnv</em></p>
+<p>_virtualenv —system-site-packages TestEnv_</p>
 </blockquote>
-<p>After that, you should activate the environment.<br>
-for Windows</p>
+<p>After that, you should activate the environment.<br>for Windows</p>
 <blockquote>
-<p><em>source ./TestEnv /Script/activate</em></p>
+<p>_source ./TestEnv /Script/activate_</p>
 </blockquote>
 <p>for Linux</p>
 <blockquote>
-<p><em>source ./TestEnv /bin/activate</em></p>
+<p>_source ./TestEnv /bin/activate_</p>
 </blockquote>
 <p>or quit the virtual environment</p>
 <blockquote>
-<p><em>deactivate</em></p>
+<p>_deactivate_</p>
 </blockquote>
-<h4 id="preprocessing">Preprocessing</h4>
-<p>First, install the required packages:</p>
+<h4 id="preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h4><p>First, install the required packages:</p>
 <blockquote>
 <p>pip install transformers</p>
-</blockquote>
-<blockquote>
 <p>pip install pytorch_lightning</p>
-</blockquote>
-<blockquote>
 <p>mkdir /workspace/working/t5_tweet</p>
-</blockquote>
-<blockquote>
 <p>mkdir /workspace/input/tweetextract</p>
 </blockquote>
-<p>We provide the dataset in:<br>
-/workspace/input/tweetextract/val.csv<br>
-/workspace/input/tweetextract/test.csv<br>
-/workspace/input/tweetextract/train.csv</p>
-<h4 id="training-and-chatting">Training and Chatting</h4>
-<p>You can find more detials about T5 mpdel from: <a href="https://huggingface.co/transformers/model_doc/t5.html" target="_blank" rel="noopener">https://huggingface.co/transformers/model_doc/t5.html</a></p>
+<p>We provide the dataset in:<br>/workspace/input/tweetextract/val.csv<br>/workspace/input/tweetextract/test.csv<br>/workspace/input/tweetextract/train.csv</p>
+<h4 id="training-and-chatting"><a href="#Training-and-Chatting" class="headerlink" title="Training and Chatting"></a>Training and Chatting</h4><p> You can find more detials about T5 mpdel from: <a href="https://huggingface.co/transformers/model_doc/t5.html" target="_blank" rel="noopener">https://huggingface.co/transformers/model_doc/t5.html</a></p>
 <p>If you finished the preparatory work, you can excute the training by runing</p>
 <blockquote>
-<p>python test_t5_gpu.py</p>
+<p>python test_t5_gpu.py </p>
 </blockquote>
 <p>or, if you only have cpus</p>
 <blockquote>
@@ -516,13 +454,12 @@ for Windows</p>
 <p>python chatbot_gui.py</p>
 </blockquote>
 <p>The Chatbot GUI:</p>
-<img src="/img/article/DeepLearningImages/Lab9/Lab9_image.png" align="center">
+<p><img src="/img/article/DeepLearningImages/Lab9/Lab9_image.png" align="center"></p>
 <hr>
-<h2 id="using-ai-in-applications">Using AI in Applications <a name="using_AI"></a></h2>
-<p>Please read this blog, and you will find a very interesting game.<br>
-<a href="https://chengkang520.github.io/article/tfjs_runing_rabbit/"><span style="font-family:Papyrus; font-size:2em;"> Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js </span></a></p>
-<p>You can find the code from <a href="https://github.com/ChengKang520/running_rabbit_tfjs" target="_blank" rel="noopener">github</a>.</p>
+<h2 id="using-ai-in-applications"><a href="#Using-AI-in-Applications" class="headerlink" title="Using AI in Applications "></a>Using AI in Applications <a name="using_AI"></a></h2><p>Please read this blog, and you will find a very interesting game.<br><a href="https://chengkang520.github.io/article/tfjs_runing_rabbit/"><span style="font-family:Papyrus; font-size:2em;"> Making an Interactive Running Game with Head or Body Movement Using TensorFlow.js </span></a></p>
+<p> You can find the code from <a href="https://github.com/ChengKang520/running_rabbit_tfjs" target="_blank" rel="noopener">github</a>.</p>
 <hr>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -533,14 +470,15 @@ for Windows</p>
 <tbody>
 <tr>
 <td>Cheng Kang</td>
-<td><a href="mailto:kangchen@fel.cvut.cz" target="_blank" rel="noopener">kangchen@fel.cvut.cz</a></td>
+<td>kangchen@fel.cvut.cz</td>
 </tr>
 <tr>
 <td>Xujing Yao</td>
-<td><a href="mailto:xy147@leicester.ac.uk" target="_blank" rel="noopener">xy147@leicester.ac.uk</a></td>
+<td>xy147@leicester.ac.uk</td>
 </tr>
 </tbody>
 </table>
+</div>
 
                 
 
@@ -637,13 +575,23 @@ for Windows</p>
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://aid.felk.cvut.cz/" target="_blank">AID group in CTU</a></li>
+                        <li><a href="http://rci.cvut.cz/" target="_blank">RCI at Czech Technical University</a></li>
                     
-                        <li><a href="http://rci.cvut.cz/" target="_blank">RCI in CTU Prague</a></li>
+                        <li><a href="http://aid.felk.cvut.cz/" target="_blank">AID at Czech Technical University</a></li>
                     
-                        <li><a href="https://www.aic.fel.cvut.cz/" target="_blank">AI Center FEE CTU</a></li>
+                        <li><a href="https://www.aic.fel.cvut.cz/" target="_blank">AI Center at Czech Technical University</a></li>
                     
-                        <li><a href="https://bipl-uol.github.io/" target="_blank">BIPL at UoL</a></li>
+                        <li><a href="https://bipl-uol.github.io/" target="_blank">BIPL at University of Leicester</a></li>
+                    
+                        <li><a href="https://ufal.mff.cuni.cz/about" target="_blank">ÚFAL at Charles University</a></li>
+                    
+                        <li><a href="https://www.engineering.hku.hk/bmeengg/staff-members/dr-yong-hu/" target="_blank">Yong Hu, BME at Hong Kong University</a></li>
+                    
+                        <li><a href="https://www.med.tsinghua.edu.cn/info/1356/1861.htm" target="_blank">BCI Group at Tsinghua University</a></li>
+                    
+                        <li><a href="https://med.szu.edu.cn/Item/2080.aspx" target="_blank">Chunqi Chang, MIE at Shenzhen University</a></li>
+                    
+                        <li><a href="http://www.szknyy.com/gz/ylfw/ksdh/pszy/ywks/" target="_blank">Shenzhen Mental Health Centre(深圳精神卫生中心)</a></li>
                     
                 </ul>
                 

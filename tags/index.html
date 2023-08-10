@@ -141,14 +141,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -198,9 +198,9 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#Computer Science" title="Computer Science" rel="4">Computer Science</a>
-                
                     <a href="#Engineering" title="Engineering" rel="2">Engineering</a>
+                
+                    <a href="#Computer Science" title="Computer Science" rel="4">Computer Science</a>
                 
                     <a href="#Applications" title="Applications" rel="1">Applications</a>
                 
@@ -208,6 +208,51 @@
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Engineering">
+                    <span class="tag-text">Engineering</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/embedded_devices_nn/">
+                        <h2 class="post-title">
+                            Embedding Neural Networks into Devices
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Embedding CNNs
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/hrv_sleep_pressure/">
+                        <h2 class="post-title">
+                            HRV for Sleep Scoring and Pressure Evaluating
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                HRV Sleep Pressure
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Computer Science">
@@ -283,51 +328,6 @@
                         
                             <h3 class="post-subtitle">
                                 Nature Language Processing
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Engineering">
-                    <span class="tag-text">Engineering</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/embedded_devices_nn/">
-                        <h2 class="post-title">
-                            Embedding Neural Networks into Devices
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Embedding CNNs
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/hrv_sleep_pressure/">
-                        <h2 class="post-title">
-                            HRV for Sleep Scoring and Pressure Evaluating
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                HRV Sleep Pressure
                             </h3>
                         
                     </a>
