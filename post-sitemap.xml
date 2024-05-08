@@ -7,6 +7,30 @@
     </url>
 
     <url>
+        <loc>https://ChengKang520.github.io/article/medical_chatbot2/</loc>
+        <lastmod>2024-02-28T10:25:35.888Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://ChengKang520.github.io/article/medical_chatbot1/</loc>
+        <lastmod>2024-02-28T10:25:32.002Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://ChengKang520.github.io/article/chatbot_psychotherapy/</loc>
+        <lastmod>2024-02-28T10:19:41.915Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://ChengKang520.github.io/article/hrv_sleep_stress/</loc>
         <lastmod>2023-08-20T17:58:23.323Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -31,14 +55,6 @@
     </url>
 
     <url>
-        <loc>https://ChengKang520.github.io/article/medical_chatbot1/</loc>
-        <lastmod>2023-02-01T09:20:05.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://ChengKang520.github.io/article/nlp_instructions/</loc>
         <lastmod>2023-01-31T21:03:42.974Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -49,14 +65,6 @@
     <url>
         <loc>https://ChengKang520.github.io/article/tfjs_runing_rabbit/</loc>
         <lastmod>2022-09-10T14:05:57.762Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://ChengKang520.github.io/article/medical_chatbot2/</loc>
-        <lastmod>2022-04-04T10:25:22.287Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
