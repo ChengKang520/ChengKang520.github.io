@@ -15,7 +15,7 @@ src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=har_embedded_syst
 
 <hr>
 <h2 id="Follow-the-tutorial-to-get-the-simple-audio-recognition-with-the-CNN-Model-and-learn-Tensorflow-Lite-about-how-to-load-deep-learning-into-the-device"><a href="#Follow-the-tutorial-to-get-the-simple-audio-recognition-with-the-CNN-Model-and-learn-Tensorflow-Lite-about-how-to-load-deep-learning-into-the-device" class="headerlink" title="Follow the tutorial to get the simple audio recognition with the CNN Model and learn Tensorflow Lite about how to load deep learning into the device "></a>Follow the tutorial to get the simple audio recognition with the CNN Model and learn Tensorflow Lite about how to load deep learning into the device <a name="a"></a></h2><p>We choose the <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/15170">SparkFun Edge Development Board - Apollo3 Blue</a> as the Development Board. You can run your demo by following the set-up of <a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/sparkfun-tensorflow#0">AI Speech Recognition with TensorFlow Lite for Microcontrollers and SparkFun Edge</a>. If you can interact with the development board by lighting colored LEDs. Then we can go to train our own models.</p>
-<img style="height:300px" src="/img/header_img/publications/Embedded_AI/developing_board.png"  align=center >
+<img style="height:300px" src="img/Embedded_AI/developing_board.png"  align=center >
 
 
 
@@ -29,7 +29,7 @@ src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=har_embedded_syst
 </blockquote>
 <table>
 	<tr>
-	    <td > <img style="height:250px" src="/img/header_img/publications/Embedded_AI/accuracy_embedded.bmp"  align=center >
+	    <td > <img style="height:250px" src="img/Embedded_AI/accuracy_embedded.bmp"  align=center >
         </td>
         <td > 
             <table border="1">
@@ -117,11 +117,11 @@ src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=har_embedded_syst
 <table>
 	<tr>
 	    <td colspan="2"> Input <br> Vector </td>
-        <td ><img style="height:250px" src="/img/header_img/publications/Embedded_AI/acc_one.bmp"  align=center ></td>
+        <td ><img style="height:250px" src="img/Embedded_AI/acc_one.bmp"  align=center ></td>
 	</tr>
     <tr>
 	    <td colspan="2"> Output <br> Vector </td>
-        <td ><img style="height:150px" src="/img/header_img/publications/Embedded_AI/acc_two.bmp"  align=center ></td>
+        <td ><img style="height:150px" src="img/Embedded_AI/acc_two.bmp"  align=center ></td>
 	</tr>
 </table>
 
@@ -131,7 +131,7 @@ src="https://ghbtns.com/github-btn.html?user=chengkang520&repo=har_embedded_syst
 <blockquote>
 <p><font face="华文行楷" size="5"> Tips:</font> When you are debugging the programe, you will encounter many problems, for example, some functions in constant.cc cannot be recognized. You should added them into the makefile.inc, or add extern”c” to include the c file into the main.cc file as well as the other headers which are included in the main file.</p>
 </blockquote>
-<img style="height:250px" src="/img/header_img/publications/Embedded_AI/memory_layers.bmp"  align=center >
+<img style="height:250px" src="img/Embedded_AI/memory_layers.bmp"  align=center >
 
 <p> Since the FLASH for this Sparkfun board is 1MB, and from the formula which shows in figure, it is easy calculated that the model can have 259 ((1024-55.026)&#x2F;3.696) dense layers including the last output layer. And the maximum parameters are about 240833 (929.9*259-10.574) on the premise that the parameters of each layer do not exceed 1000. Therefore, the maximum number of layers is totally satisfied almost all models while the units or neurons should be set carefully.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion "></a>Conclusion <a name="e"></a></h2><p>The presented study using the microcontroller to predicts the human activity. The CNN model is firstly set according to the existing literature related to the only 3D accelerometer as the input data. Considered the limit memory footprint, the first kind of designed model has 95% accuracy. And after the quantization, it still keeps the high accuracy. However, due to the limit tensor area size and few operators in the microcontroller, the group of input data is reduced from 64 samples to the 16 samples and the model is changed again. The finally model which can be used in the microcontroller has 82% accuracy. The microcontroller is debugging success which means it is able to use its accelerometer to get the data and then analyze them to recognize the human activity by lighting the different LEDs.</p>
